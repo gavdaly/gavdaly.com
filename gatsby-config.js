@@ -75,7 +75,7 @@ module.exports = {
         },
         feeds: [
           {
-            serialize: ({ query: { site, allArticle, allContentfulPost } }) => {
+            serialize: ({ query: { site, allArticle } }) => {
               return allArticle.edges
                 .filter(edge => !edge.node.secret)
                 .map(edge => {
