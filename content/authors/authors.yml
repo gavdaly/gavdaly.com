@@ -1,17 +1,14 @@
-- name: Dennis Brotzky
+- name: Gavin Daly
   bio: |
-    Written by You. This is where your author bio lives. Share your work, your
-    joys and of course, your Twitter handle.
-  avatar: ./avatars/dennis-brotzky.jpg
+    I need to write something here.
+  avatar: ./avatars/gavdaly.jpg
   featured: true
   social:
     - name: github
-      url: https://github.com
+      url: https://github.com/gavdaly
     - name: twitter
-      url: https://github.com
+      url: https://github.com/gavdaly
     - name: instagram
-      url: https://github.com
-    - name: dribbble
-      url: https://github.com
+      url: https://github.com/gavdaly
     - name: linkedin
-      url: https://github.com
+      url: https://github.com/gavdaly
