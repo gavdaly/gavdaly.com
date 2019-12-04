@@ -1,3 +1,6 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/1dd8da95-bf8d-45bc-8732-81a3e25b4e5b/deploy-status)](https://app.netlify.com/sites/sad-hypatia-f003a4/deploys)
+
+
 <a href="https://novela.narative.co" target="_blank">
 <img src="https://raw.githubusercontent.com/narative/gatsby-theme-novela-example/master/assets/gatsby-theme-novela-hero.jpg" alt="gatsby-novela-theme hero image" />
 </a>
