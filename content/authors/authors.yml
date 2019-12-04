@@ -1,7 +1,7 @@
 - name: Gavin Daly
   bio: |
     I need to write something here.
-  avatar: ./avatars/gavdaly.jpg
+  avatar: ./avatars/gavdaly.png
   featured: true
   social:
     - name: github
