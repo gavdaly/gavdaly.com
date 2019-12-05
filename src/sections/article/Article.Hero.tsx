@@ -1,25 +1,25 @@
-import React from 'react';
-import styled from '@emotion/styled';
+import React from "react"
+import styled from "@emotion/styled"
 
-import Headings from '@components/Headings';
-import Image, { ImagePlaceholder } from '@components/Image';
+import Headings from "@components/Headings"
+import Image, { ImagePlaceholder } from "@components/Image"
 
-import mediaqueries from '@styles/media';
-import { IArticle, IAuthor } from '@types';
+import mediaqueries from "@styles/media"
+import { IArticle, IAuthor } from "@types"
 
-import ArticleAuthors from './Article.Authors';
+import ArticleAuthors from "./Article.Authors"
 
 interface ArticleHeroProps {
-  article: IArticle;
-  authors: IAuthor[];
+  article: IArticle
+  authors: IAuthor[]
 }
 
 const ArticleHero: React.FC<ArticleHeroProps> = ({ article, authors }) => {
-  const hasCoAUthors = authors.length > 1;
+  const hasCoAUthors = authors.length > 1
   const hasHeroImage =
     article.hero &&
     Object.keys(article.hero.full).length !== 0 &&
-    article.hero.full.constructor === Object;
+    article.hero.full.constructor === Object
 
   return (
     <Hero>
@@ -40,10 +40,10 @@ const ArticleHero: React.FC<ArticleHeroProps> = ({ article, authors }) => {
         )}
       </HeroImage>
     </Hero>
-  );
-};
+  )
+}
 
-export default ArticleHero;
+export default ArticleHero
 
 const Hero = styled.div`
   ${p => mediaqueries.phablet`
@@ -71,15 +71,15 @@ const Hero = styled.div`
       transition: ${p.theme.colorModeTransition};
     }
   `}
-`;
+`
 
 const ArticleMeta = styled.div<{ hasCoAUthors: boolean }>`
-  margin-left: ${p => (p.hasCoAUthors ? '10px' : '0')};
+  margin-left: ${p => (p.hasCoAUthors ? "10px" : "0")};
 
   ${mediaqueries.phablet`
     margin-left: 0;
   `}
-`;
+`
 
 const Header = styled.header`
   position: relative;
@@ -108,11 +108,10 @@ const Header = styled.header`
   @media screen and (max-height: 700px) {
     margin: 100px auto;
   }
-`;
+`
 
 const HeroHeading = styled(Headings.h1)`
   font-size: 48px;
-  font-family: ${p => p.theme.fonts.serif};
   margin-bottom: 25px;
   font-weight: bold;
   line-height: 1.32;
@@ -125,7 +124,7 @@ const HeroHeading = styled(Headings.h1)`
   ${mediaqueries.phablet`
     font-size: 32px;
   `}
-`;
+`
 
 const HeroSubtitle = styled.div<{ hasCoAUthors: boolean }>`
   position: relative;
@@ -159,7 +158,7 @@ const HeroSubtitle = styled.div<{ hasCoAUthors: boolean }>`
       margin-bottom: 5px;
     }
   `}
-`;
+`
 
 const HeroImage = styled.div`
   position: relative;
@@ -184,4 +183,4 @@ const HeroImage = styled.div`
       height: 220px;
     }
 `}
-`;
+`

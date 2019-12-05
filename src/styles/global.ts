@@ -1,6 +1,14 @@
-import { css } from "@emotion/core";
+import { css } from "@emotion/core"
 
 export const globalStyles = css`
+  @font-face {
+    font-family: "FF Meta VF";
+    src: url("https://variablefonts.monotype.com/MetaVariableDemo-Set.woff2")
+      format("woff2");
+    font-display: swap;
+    font-style: normal italic;
+    font-weight: 100 900;
+  }
   /**
    * Thanks to Benjamin De Cock
    * https://gist.github.com/bendc/ac03faac0bf2aee25b49e5fd260a727d
@@ -12,14 +20,6 @@ export const globalStyles = css`
     --ease-out-quart: cubic-bezier(0.165, 0.84, 0.44, 1);
     --ease-in-out-quad: cubic-bezier(0.455, 0.03, 0.515, 0.955);
     --ease-in-out-quart: cubic-bezier(0.77, 0, 0.175, 1);
-  }
-
-  @font-face {
-    font-family: "-apple-system", "BlinkMacSystemFont", "San Francisco",
-      "Helvetica Neue", "Helvetica", "Ubuntu", "Roboto", "Noto", "Segoe UI",
-      "Arial", sans-serif;
-    font-weight: 400;
-    font-style: normal;
   }
 
   *,
@@ -44,9 +44,9 @@ export const globalStyles = css`
   }
 
   body {
-    font-family: "-apple-system", "BlinkMacSystemFont", "San Francisco",
-      "Helvetica Neue", "Helvetica", "Ubuntu", "Roboto", "Noto", "Segoe UI",
-      "Arial", sans-serif;
+    font-family: "FF Meta VF", -apple-system, BlinkMacSystemFont, "Segoe UI",
+      Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+      sans-serif;
     font-size: 1.6rem;
     margin: 0;
     font-weight: 400;
@@ -76,9 +76,9 @@ export const globalStyles = css`
   textarea,
   select,
   button {
-    font-family: "-apple-system", "BlinkMacSystemFont", "San Francisco",
-      "Helvetica Neue", "Helvetica", "Ubuntu", "Roboto", "Noto", "Segoe UI",
-      "Arial", sans-serif;
+    font-family: "FF Meta VF", -apple-system, BlinkMacSystemFont, "Segoe UI",
+      Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+      sans-serif;
   }
 
   .underline {
@@ -137,4 +137,4 @@ export const globalStyles = css`
   img.Image__Zoom ~ div {
     background: transparent !important;
   }
-`;
+`

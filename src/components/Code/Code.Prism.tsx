@@ -1,29 +1,29 @@
-import React, { useState } from "react";
-import Highlight, { defaultProps, Language } from 'prism-react-renderer'
-import styled from "@emotion/styled";
-import { LiveProvider, LiveEditor, LiveError, LivePreview } from "react-live";
-import theme from "prism-react-renderer/themes/oceanicNext";
+import React, { useState } from "react"
+import Highlight, { defaultProps, Language } from "prism-react-renderer"
+import styled from "@emotion/styled"
+import { LiveProvider, LiveEditor, LiveError, LivePreview } from "react-live"
+import theme from "prism-react-renderer/themes/oceanicNext"
 
-import Icons from "@icons";
-import mediaqueries from "@styles/media";
-import { copyToClipboard } from "@utils";
+import Icons from "@icons"
+import mediaqueries from "@styles/media"
+import { copyToClipboard } from "@utils"
 
 interface CopyProps {
   toCopy: string
 }
 
 const Copy: React.FC<CopyProps> = ({ toCopy }) => {
-  const [hasCopied, setHasCopied] = useState<boolean>(false);
+  const [hasCopied, setHasCopied] = useState<boolean>(false)
 
   function copyToClipboardOnClick() {
-    if (hasCopied) return;
+    if (hasCopied) return
 
-    copyToClipboard(toCopy);
-    setHasCopied(true);
+    copyToClipboard(toCopy)
+    setHasCopied(true)
 
     setTimeout(() => {
-      setHasCopied(false);
-    }, 2000);
+      setHasCopied(false)
+    }, 2000)
   }
 
   return (
@@ -38,33 +38,33 @@ const Copy: React.FC<CopyProps> = ({ toCopy }) => {
         </>
       )}
     </CopyButton>
-  );
-};
+  )
+}
 
-const RE = /{([\d,-]+)}/;
+const RE = /{([\d,-]+)}/
 
 function calculateLinesToHighlight(meta) {
   if (RE.test(meta)) {
     const lineNumbers = RE.exec(meta)[1]
       .split(",")
-      .map(v => v.split("-").map(y => parseInt(y, 10)));
+      .map(v => v.split("-").map(y => parseInt(y, 10)))
 
     return index => {
-      const lineNumber = index + 1;
+      const lineNumber = index + 1
       const inRange = lineNumbers.some(([start, end]) =>
-        end ? lineNumber >= start && lineNumber <= end : lineNumber === start
-      );
-      return inRange;
-    };
+        end ? lineNumber >= start && lineNumber <= end : lineNumber === start,
+      )
+      return inRange
+    }
   } else {
-    return () => false;
+    return () => false
   }
 }
 
 interface CodePrismProps {
-  codeString: string;
-  language: Language;
-  metastring?: string;
+  codeString: string
+  language: Language
+  metastring?: string
 }
 
 const CodePrism: React.FC<CodePrismProps> = ({
@@ -73,7 +73,7 @@ const CodePrism: React.FC<CodePrismProps> = ({
   metastring,
   ...props
 }) => {
-  const shouldHighlightLine = calculateLinesToHighlight(metastring);
+  const shouldHighlightLine = calculateLinesToHighlight(metastring)
 
   if (props["live"]) {
     return (
@@ -84,7 +84,7 @@ const CodePrism: React.FC<CodePrismProps> = ({
           <LiveError style={{ color: "tomato" }} />
         </LiveProvider>
       </Container>
-    );
+    )
   } else {
     return (
       <Highlight {...defaultProps} code={codeString} language={language}>
@@ -99,8 +99,8 @@ const CodePrism: React.FC<CodePrismProps> = ({
                     key: index,
                     className: shouldHighlightLine(index)
                       ? "highlight-line"
-                      : ""
-                  });
+                      : "",
+                  })
 
                   return (
                     <div key={index} className={className}>
@@ -108,28 +108,28 @@ const CodePrism: React.FC<CodePrismProps> = ({
                       {line.map((token, key) => {
                         const { className, children } = getTokenProps({
                           token,
-                          key
-                        });
+                          key,
+                        })
 
                         return (
                           <span key={key} className={className}>
                             {children}
                           </span>
-                        );
+                        )
                       })}
                     </div>
-                  );
+                  )
                 })}
               </pre>
             </div>
-          );
+          )
         }}
       </Highlight>
-    );
+    )
   }
 }
 
-export default CodePrism;
+export default CodePrism
 
 const CopyButton = styled.button`
   position: absolute;
@@ -159,7 +159,7 @@ const CopyButton = styled.button`
   ${mediaqueries.tablet`
     display: none;
   `}
-`;
+`
 
 const Container = styled.div`
   overflow: scroll;
@@ -169,12 +169,10 @@ const Container = styled.div`
   font-size: 13px;
   margin: 15px auto 50px;
   border-radius: 5px;
-  font-family: ${p => p.theme.fonts.monospace} !important;
 
   textarea,
   pre {
     padding: 32px !important;
-    font-family: ${p => p.theme.fonts.monospace} !important;
   }
 
   ${mediaqueries.desktop`
@@ -202,4 +200,4 @@ const Container = styled.div`
     overflow: initial;
     position: relative;
   `};
-`;
+`

@@ -14,17 +14,6 @@ import {
   getBreakpointFromTheme,
 } from "../../utils"
 
-const siteQuery = graphql`
-  {
-    sitePlugin(name: { eq: "@narative/gatsby-theme-novela" }) {
-      pluginOptions {
-        rootPath
-        basePath
-      }
-    }
-  }
-`
-
 const DarkModeToggle: React.FC<{}> = () => {
   const [colorMode, setColorMode] = useColorMode()
   const isDark = colorMode === `dark`

@@ -1,14 +1,14 @@
-import React from "react";
-import styled from "@emotion/styled";
-import { css } from "@emotion/core";
-import { Link } from "gatsby";
+import React from "react"
+import styled from "@emotion/styled"
+import { css } from "@emotion/core"
+import { Link } from "gatsby"
 
-import Headings from "@components/Headings";
-import Image from "@components/Image";
+import Headings from "@components/Headings"
+import Image from "@components/Image"
 
-import mediaqueries from "@styles/media";
+import mediaqueries from "@styles/media"
 
-import { IArticle } from "@types";
+import { IArticle } from "@types"
 
 interface ArticlesNextProps {
   articles: IArticle[]
@@ -27,28 +27,28 @@ interface ArticlesNextProps {
  * mix into the generic list component.
  */
 const ArticlesNext: React.FC<ArticlesNextProps> = ({ articles }) => {
-  if (!articles) return null;
-  const numberOfArticles = articles.length;
+  if (!articles) return null
+  const numberOfArticles = articles.length
   return (
     <Grid numberOfArticles={numberOfArticles}>
       <GridItem article={articles[0]} />
       <GridItem article={articles[1]} narrow />
     </Grid>
-  );
-};
+  )
+}
 
-export default ArticlesNext;
+export default ArticlesNext
 
 interface GridItemProps {
-  article: IArticle;
-  narrow?: boolean;
+  article: IArticle
+  narrow?: boolean
 }
 
 const GridItem: React.FC<GridItemProps> = ({ article, narrow }) => {
-  if (!article) return null;
+  if (!article) return null
 
-  const hasOverflow = narrow && article.title.length > 35;
-  const imageSource = narrow ? article.hero.narrow : article.hero.regular;
+  const hasOverflow = narrow && article.title.length > 35
+  const imageSource = narrow ? article.hero.narrow : article.hero.regular
 
   return (
     <ArticleLink
@@ -69,11 +69,11 @@ const GridItem: React.FC<GridItemProps> = ({ article, narrow }) => {
         </MetaData>{" "}
       </Item>
     </ArticleLink>
-  );
-};
+  )
+}
 
-const wide = "1fr";
-const narrow = "457px";
+const wide = "1fr"
+const narrow = "457px"
 
 const limitToTwoLines = css`
   text-overflow: ellipsis;
@@ -87,7 +87,7 @@ const limitToTwoLines = css`
   ${mediaqueries.phablet`
     -webkit-line-clamp: 3;
   `}
-`;
+`
 const Grid = styled.div<{ numberOfArticles: number }>`
   position: relative;
   display: grid;
@@ -96,12 +96,12 @@ const Grid = styled.div<{ numberOfArticles: number }>`
       return `
       grid-template-columns: 1fr;
       grid-template-rows: 1
-    `;
+    `
     } else {
       return `
       grid-template-columns: ${wide} ${narrow};
       grid-template-rows: 2;
-      `;
+      `
     }
   }}
   column-gap: 30px;
@@ -115,7 +115,7 @@ const Grid = styled.div<{ numberOfArticles: number }>`
   ${mediaqueries.tablet`
     grid-template-columns: 1fr;
   `}
-`;
+`
 
 const ImageContainer = styled.div`
   position: relative;
@@ -143,7 +143,7 @@ const ImageContainer = styled.div`
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
   `}
-`;
+`
 
 const Item = styled.div`
   position: relative;
@@ -154,14 +154,13 @@ const Item = styled.div`
     border-bottom-left-radius: 5px;
     background: ${p => p.theme.colors.card};
   }
-`;
+`
 
 const Title = styled(Headings.h3)`
   font-size: 22px;
   line-height: 1.4;
   margin-bottom: ${p => (p.hasOverflow ? "45px" : "10px")};
   color: ${p => p.theme.colors.primary};
-  font-family: ${p => p.theme.fonts.serif};
   transition: color 0.3s ease-in-out;
   ${limitToTwoLines};
 
@@ -173,7 +172,7 @@ const Title = styled(Headings.h3)`
     margin-bottom: 10px;
     -webkit-line-clamp: 3;
   `}
-`;
+`
 
 const Excerpt = styled.p<{ narrow: boolean; hasOverflow: boolean }>`
   ${limitToTwoLines};
@@ -197,7 +196,7 @@ const Excerpt = styled.p<{ narrow: boolean; hasOverflow: boolean }>`
     margin-bottom: 20px;
     -webkit-line-clamp: 3;
   `}
-`;
+`
 
 const MetaData = styled.div`
   font-weight: 600;
@@ -209,7 +208,7 @@ const MetaData = styled.div`
     max-width: 100%;
     padding:  0 20px 30px;
   `}
-`;
+`
 
 const ArticleLink = styled(Link)<{ narrow: string }>`
   position: relative;
@@ -256,4 +255,4 @@ const ArticleLink = styled(Link)<{ narrow: string }>`
       transform: scale(0.97) translateY(3px);
     }
   `}
-`;
+`
