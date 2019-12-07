@@ -8,7 +8,7 @@ const Head = styled.thead`
   font-weight: 600;
   color: ${p => p.theme.colors.primary};
   font-family: ${p => p.theme.fonts.serif};
-  transition: ${p => p.theme.colorModeTransition};
+  transition: background 0.25s var(--ease-in-out-quad), color 0.25s var(--ease-in-out-quad);
 `;
 
 export default Head;

@@ -36,8 +36,8 @@ const ArticleHero: React.FC<ArticleHeroProps> = ({ article, authors }) => {
         {hasHeroImage ? (
           <Image src={article.hero.full} />
         ) : (
-          <ImagePlaceholder />
-        )}
+            <ImagePlaceholder />
+          )}
       </HeroImage>
     </Hero>
   )
@@ -55,7 +55,7 @@ const Hero = styled.div`
       position: absolute;
       left: 0;
       top: 0;
-      transition: ${p.theme.colorModeTransition};
+      transition: background 0.25s var(--ease-in-out-quad), color 0.25s var(--ease-in-out-quad);
     }
 
     &::after {
@@ -68,7 +68,7 @@ const Hero = styled.div`
       top: 10px;
       border-top-left-radius: 25px;
       border-top-right-radius: 25px;
-      transition: ${p.theme.colorModeTransition};
+      transition: background 0.25s var(--ease-in-out-quad), color 0.25s var(--ease-in-out-quad);
     }
   `}
 `
@@ -137,7 +137,7 @@ const HeroSubtitle = styled.div<{ hasCoAUthors: boolean }>`
     flex-direction: column;
 
     ${p.hasCoAUthors &&
-      `
+    `
         &::before {
           content: '';
           position: absolute;

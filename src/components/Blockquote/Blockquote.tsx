@@ -2,7 +2,7 @@ import styled from "@emotion/styled"
 import mediaqueries from "@styles/media"
 
 const Blockquote = styled.blockquote`
-  transition: ${p => p.theme.colorModeTransition};
+  transition: background 0.25s var(--ease-in-out-quad), color 0.25s var(--ease-in-out-quad);
   margin: 15px auto 50px;
   color: ${p => p.theme.colors.articleText};
   font-style: italic;

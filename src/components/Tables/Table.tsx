@@ -7,7 +7,7 @@ const StyledTable = styled.table`
   line-height: 1.65;
   color: ${p => p.theme.colors.grey};
   font-family: ${p => p.theme.fonts.sansSerif};
-  transition: ${p => p.theme.colorModeTransition};
+  transition: background 0.25s var(--ease-in-out-quad), color 0.25s var(--ease-in-out-quad);
   background: ${p => p.theme.colors.card};
   margin: 45px auto 85px;
   width: 100%;

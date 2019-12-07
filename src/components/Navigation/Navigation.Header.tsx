@@ -120,11 +120,11 @@ const NavigationHeader: React.FC = () => {
               <Icons.Ex fill={fill} />
             </button>
           ) : (
-            <>
-              <SharePageButton />
-              <DarkModeToggle />
-            </>
-          )}
+              <>
+                <SharePageButton />
+                <DarkModeToggle />
+              </>
+            )}
         </NavControls>
       </NavContainer>
     </Section>
@@ -166,7 +166,7 @@ const NavContainer = styled.div`
   }
 `
 
-const LogoLink = styled(Link)<{ back: string }>`
+const LogoLink = styled(Link) <{ back: string }>`
   position: relative;
   display: flex;
   align-items: center;
@@ -336,7 +336,7 @@ const MoonMask = styled.div<{ isDark: boolean }>`
   background: ${p => p.theme.colors.background};
   transform: translate(${p => (p.isDark ? "14px, -14px" : "0, 0")});
   opacity: ${p => (p.isDark ? 0 : 1)};
-  transition: ${p => p.theme.colorModeTransition}, transform 0.45s ease;
+  transition: background 0.25s var(--ease-in-out-quad), color 0.25s var(--ease-in-out-quad), transform 0.45s ease;
 `
 
 const Hidden = styled.span`

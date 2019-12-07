@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 const Anchor = styled.a`
-  transition: ${p => p.theme.colorModeTransition};
+  transition: background 0.25s var(--ease-in-out-quad), color 0.25s var(--ease-in-out-quad);
   color: ${p => p.theme.colors.accent};
 
   &:visited {

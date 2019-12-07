@@ -228,5 +228,5 @@ const MoonMask = styled.div<{ isDark: boolean }>`
   background: ${p => p.theme.colors.background};
   transform: translate(${p => (p.isDark ? "14px, -14px" : "0, 0")});
   opacity: ${p => (p.isDark ? 0 : 1)};
-  transition: transform 0.45s ease, ${p => p.theme.colorModeTransition};
+  transition: transform 0.45s ease, background 0.25s var(--ease-in-out-quad), color 0.25s var(--ease-in-out-quad);
 `;

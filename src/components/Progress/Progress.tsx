@@ -8,7 +8,22 @@ export interface IProgress {
   contentHeight: number;
 }
 
+
 const Progress: React.FC<IProgress> = ({ contentHeight }) => {
+  const progress = useProgress(contentHeight)
+
+  return (
+    <ProgressContainer tabIndex={-1}>
+      <Trackline aria-hidden="true">
+        <ProgressLine style={{ transform: `translateY(${progress}%)` }} />
+      </Trackline>
+    </ProgressContainer>
+  );
+};
+
+export default Progress;
+
+function useProgress(contentHeight: number) {
   const [progress, setProgress] = useState<number>(0);
 
   useEffect(() => {
@@ -28,16 +43,8 @@ const Progress: React.FC<IProgress> = ({ contentHeight }) => {
     }
   }, [contentHeight]);
 
-  return (
-    <ProgressContainer tabIndex={-1}>
-      <Trackline aria-hidden="true">
-        <ProgressLine style={{ transform: `translateY(${progress}%)` }} />
-      </Trackline>
-    </ProgressContainer>
-  );
-};
-
-export default Progress;
+  return progress
+}
 
 const ProgressContainer = styled.div`
   position: relative;

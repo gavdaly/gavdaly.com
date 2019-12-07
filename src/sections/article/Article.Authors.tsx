@@ -130,7 +130,7 @@ const AuthorLink = styled.div`
   color: inherit;
 
   strong {
-    transition: ${p => p.theme.colorModeTransition};
+    transition: background 0.25s var(--ease-in-out-quad), color 0.25s var(--ease-in-out-quad);
   }
 
   &:hover strong {
@@ -273,7 +273,7 @@ const CoAuthorsContainer = styled.div<{ isOpen: boolean }>`
     bottom: -16px;
     background: ${p => p.theme.colors.card};
     box-shadow: ${p =>
-      p.isOpen ? "none" : " 0px 0px 15px rgba(0, 0, 0, 0.1)"};
+    p.isOpen ? "none" : " 0px 0px 15px rgba(0, 0, 0, 0.1)"};
     border-radius: 5px;
     z-index: 0;
     transition: opacity 0.3s;
