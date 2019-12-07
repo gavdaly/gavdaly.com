@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import styled from "@emotion/styled";
 import throttle from "lodash/throttle";
 
 import { clamp } from "@utils";
@@ -10,14 +9,20 @@ export interface IProgress {
 
 
 const Progress: React.FC<IProgress> = ({ contentHeight }) => {
-  const progress = useProgress(contentHeight)
+  const height = useProgress(contentHeight)
 
   return (
-    <ProgressContainer tabIndex={-1}>
-      <Trackline aria-hidden="true">
-        <ProgressLine style={{ transform: `translateY(${progress}%)` }} />
-      </Trackline>
-    </ProgressContainer>
+    <svg xmlns="http://www.w3.org/2000/svg" height={'calc(88vh - 80px)'} width='2px' style={{
+      backgroundColor: 'var(--color-track)',
+      opacity: 0.6,
+      overflow: 'hidden'
+    }}>
+      <rect
+        width='2px'
+        height={height + '%'} color={'var(--color-progress)'}
+      />
+    </svg>
+
   );
 };
 
@@ -46,29 +51,3 @@ function useProgress(contentHeight: number) {
   return progress
 }
 
-const ProgressContainer = styled.div`
-  position: relative;
-  outline: none;
-  user-select: none;
-`;
-
-const Trackline = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  height: calc(88vh - 40px);
-  max-height: 425px;
-  width: 1px;
-  background-color: var(--color-track);
-  opacity: 0.6;
-  overflow: hidden;
-`;
-
-const ProgressLine = styled.div`
-  position: absolute;
-  height: 100%;
-  top: -100%;
-  width: 1px;
-  background-color: var(--color-progress);
-  left: 0;
-`;
