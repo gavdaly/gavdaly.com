@@ -1,81 +1,33 @@
-import React, { useState, useEffect } from "react"
-import styled from "@emotion/styled"
-import { Link, navigate } from "gatsby"
-import { useColorMode } from "theme-ui"
+import React from 'react'
+import styled from '@emotion/styled'
+import { Link } from 'gatsby'
 
-import Section from "../../components/Section"
-import Logo from "../../components/Logo"
+import Section from '../../components/Section'
+import Logo from '../../components/Logo'
 
-import Icons from "../../icons"
-import mediaqueries from "../../styles/media"
-import {
-  getWindowDimensions,
-  getBreakpointFromTheme,
-} from "../../utils"
+import mediaqueries from '../../styles/media'
 
-import { DarkModeToggle } from "@components/DarkModeToggle"
-import { SharePageButton } from "@components/SharePageButton"
+import { DarkModeToggle } from '@components/DarkModeToggle'
+import { SharePageButton } from '@components/SharePageButton'
 
-const NavigationHeader: React.FC = () => {
-  const [showBackArrow, setShowBackArrow] = useState<boolean>(false)
-  const [previousPath, setPreviousPath] = useState<string>("/")
-
-  const [colorMode] = useColorMode()
-  const fill = colorMode === "dark" ? "#fff" : "#000"
-
-  useEffect(() => {
-    const { width } = getWindowDimensions()
-    const phablet = getBreakpointFromTheme("phablet")
-
-    const prev = localStorage.getItem("previousPath")
-    const previousPathWasHomepage =
-      prev === "/" || (prev && prev.includes("/page/"))
-    const isNotPaginated = !location.pathname.includes("/page/")
-
-    setShowBackArrow(
-      previousPathWasHomepage && isNotPaginated && width <= phablet,
-    )
-    setPreviousPath(prev)
-  }, [])
-
-  return (
-    <Section>
-      <NavContainer>
-        <LogoLink
-          to="/"
-          data-a11y="false"
-          title="Navigate back to the homepage"
-          aria-label="Navigate back to the homepage"
-          back={showBackArrow ? "true" : "false"}
-        >
-          {showBackArrow && (
-            <BackArrowIconContainer>
-              <Icons.ChevronLeft fill={fill} />
-            </BackArrowIconContainer>
-          )}
-          <Logo fill={fill} />
-          <Hidden>Navigate back to the homepage</Hidden>
-        </LogoLink>
-        <NavControls>
-          {showBackArrow ? (
-            <button
-              onClick={() => navigate(previousPath)}
-              title="Navigate back to the homepage"
-              aria-label="Navigate back to the homepage"
-            >
-              <Icons.Ex fill={fill} />
-            </button>
-          ) : (
-              <>
-                <SharePageButton />
-                <DarkModeToggle />
-              </>
-            )}
-        </NavControls>
-      </NavContainer>
-    </Section>
-  )
-}
+const NavigationHeader: React.FC = () => (
+  <Section>
+    <NavContainer>
+      <LogoLink
+        to="/"
+        data-a11y="false"
+        title="Navigate back to the homepage"
+        aria-label="Navigate back to the homepage"
+      >
+        <Logo />
+      </LogoLink>
+      <NavControls>
+        <SharePageButton />
+        <DarkModeToggle />
+      </NavControls>
+    </NavContainer>
+  </Section>
+)
 
 export default NavigationHeader
 
@@ -112,18 +64,18 @@ const NavContainer = styled.div`
   }
 `
 
-const LogoLink = styled(Link) <{ back: string }>`
+const LogoLink = styled(Link)<{ back: string }>`
   position: relative;
   display: flex;
   align-items: center;
-  left: ${p => (p.back === "true" ? "-54px" : 0)};
+  left: ${p => (p.back === 'true' ? '-54px' : 0)};
 
   ${mediaqueries.desktop_medium`
     left: 0
   `}
 
   &[data-a11y="true"]:focus::after {
-    content: "";
+    content: '';
     position: absolute;
     left: -10%;
     top: -30%;
