@@ -5,7 +5,7 @@ import mediaqueries from "@styles/media";
 
 import { Icon } from '@types';
 
-const Logo: Icon = ({ fill = "white" }) => {
+const Logo: Icon = () => {
   return (
     <LogoContainer>
 
