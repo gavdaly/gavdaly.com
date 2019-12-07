@@ -145,9 +145,8 @@ const SEO: React.FC<HelmetProps> = ({
     >
       {children}
       <style>
-        {`@font-face {
-          font-family: "FF Meta VF";
-      src: url("https://variablefonts.monotype.com/MetaVariableDemo-Set.woff2")
+        {`@font-face{font-family: "FF Meta VF";
+      src: url("/MetaVariableDemo-Set.woff2")
         format("woff2");
       font-display: swap;
       font-style: normal italic;

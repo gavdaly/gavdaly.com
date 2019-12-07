@@ -15,7 +15,7 @@ import { globalStyles } from '@styles';
  * which hides a lot of the mess we need to create our Desktop and Mobile experiences.
  */
 const Layout: React.FC<{}> = ({ children }) => {
-  const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+  // const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
   const [colorMode] = useColorMode();
 
   console.log(`ColorMode`, colorMode)
