@@ -74,7 +74,7 @@ const FooterContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   padding-bottom: 80px;
-  color: var(--color-grey);
+  color: var(--color-primary);
 
   ${mediaqueries.tablet`
     flex-direction: column;
