@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import styled from '@emotion/styled'
 import { keyframes } from '@emotion/core'
-import { useColorMode } from 'theme-ui'
 
 import Icons from '@icons'
 
-import { getHighlightedTextPositioning, getSelectionDimensions, getSelectionText, getWindowDimensions } from '@utils'
+import { getHighlightedTextPositioning, getSelectionDimensions, getSelectionText } from '@utils'
 
 interface MenuFloatState {
   x: number
@@ -21,7 +20,6 @@ const MENU_WIDTH: number = 225
 const MENU_HEIGHT: number = 46
 
 const ArticleShare: React.FC<{}> = () => {
-  const [colorMode] = useColorMode()
   const [text, setText] = useState('')
   const [focus, setFocus] = useState(false)
   const [canTweet, setCanTweet] = useState(true)
@@ -32,7 +30,6 @@ const ArticleShare: React.FC<{}> = () => {
   })
 
   const share = generateShare(text)
-  const isDark = colorMode === 'dark'
 
   useEffect(() => {
     const events: string[] = ['keydown', 'keyup', 'mouseup', 'resize']
@@ -140,7 +137,6 @@ const ArticleShare: React.FC<{}> = () => {
         display: show && focus ? 'flex' : 'none',
         pointerEvents: show && focus ? 'initial' : 'none',
       }}
-      isDark={isDark}
     >
       <MenuText>Share: </MenuText>
       <ReferralLink disabled={!canTweet} share={share.twitter}>
@@ -208,15 +204,15 @@ const popUpwards = keyframes`
   }
 `
 
-const MenuFloat = styled.div<{ isDark: boolean }>`
+const MenuFloat = styled.div`
   position: absolute;
   align-items: center;
   z-index: 1;
   width: ${MENU_WIDTH}px;
   height: ${MENU_HEIGHT}px;
   padding: 7px 11px 7px 19px;
-  color: var(--color-grey);
-  background: ${p => (p.isDark ? '#fafafa' : '#000')};
+  color: var(--color-tooltip);
+  background: var(--color-tooltip-background);
   border-radius: 5px;
   font-size: 18px;
   font-weight: 600;
@@ -234,14 +230,12 @@ const MenuFloat = styled.div<{ isDark: boolean }>`
     height: 0;
     border-left: 8px solid transparent;
     border-right: 8px solid transparent;
-    border-top: 8px solid ${p => (p.isDark ? '#fafafa' : '#000')};
+    border-top: 8px solid var(--color-tooltip-background);
     transition: border-color 200ms;
   }
 
   svg {
-    path {
-      fill: ${p => (p.isDark ? '#000' : '#fff')};
-    }
+    color: var(--color-tooltip);
   }
 `
 

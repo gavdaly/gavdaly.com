@@ -3,9 +3,7 @@ import styled from '@emotion/styled'
 
 import mediaqueries from '@styles/media'
 
-import { Icon } from '@types'
-
-const Logo: Icon = () => {
+const Logo: React.FC = () => {
   return (
     <LogoContainer>
       <svg

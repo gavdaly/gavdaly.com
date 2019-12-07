@@ -1,25 +1,24 @@
-import React from "react"
+import React from 'react'
 
-import { MDXRenderer } from "gatsby-plugin-mdx"
-import { MDXProvider } from "@mdx-js/react"
+import { MDXRenderer } from 'gatsby-plugin-mdx'
+import { MDXProvider } from '@mdx-js/react'
 
-import styled from "@emotion/styled"
-import { css } from "@emotion/core"
-import { useColorMode } from "theme-ui"
+import styled from '@emotion/styled'
+import { css } from '@emotion/core'
 
-import Anchor from "@components/Anchor"
-import Blockquote from "@components/Blockquote"
-import Code from "@components/Code"
-import Headings from "@components/Headings"
-import HorizontalRule from "@components/HorizontalRule"
-import Lists from "@components/Lists"
-import Paragraph from "@components/Paragraph"
-import Tables from "@components/Tables"
-import { ImageZoom } from "@components/Image"
-import Figcaption from "@components/Figcaption"
+import Anchor from '@components/Anchor'
+import Blockquote from '@components/Blockquote'
+import Code from '@components/Code'
+import Headings from '@components/Headings'
+import HorizontalRule from '@components/HorizontalRule'
+import Lists from '@components/Lists'
+import Paragraph from '@components/Paragraph'
+import Tables from '@components/Tables'
+import { ImageZoom } from '@components/Image'
+import Figcaption from '@components/Figcaption'
 
-import mediaqueries from "@styles/media"
-import { toKebabCase } from "@utils"
+import mediaqueries from '@styles/media'
+import { toKebabCase } from '@utils'
 
 const components = {
   img: ImageZoom,
@@ -49,14 +48,10 @@ interface MDXProps {
 }
 
 const MDX: React.FC<MDXProps> = ({ content, children, ...props }) => {
-  const [colorMode] = useColorMode()
-
   return (
     <MDXProvider components={components}>
       <MDXBody>
-        <MDXRenderer isDark={colorMode === "dark"} {...props}>
-          {content}
-        </MDXRenderer>
+        <MDXRenderer {...props}>{content}</MDXRenderer>
         {children}
       </MDXBody>
     </MDXProvider>
@@ -66,9 +61,9 @@ const MDX: React.FC<MDXProps> = ({ content, children, ...props }) => {
 export default MDX
 
 const IMAGE_WIDTHS = {
-  regular: "680px",
-  large: "1004px",
-  full: "100vw",
+  regular: '680px',
+  large: '1004px',
+  full: '100vw',
 }
 
 const ARTICLE_WIDTH = css`

@@ -38,7 +38,6 @@ export const globalStyles = css`
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
     cursor: default;
-    font-size: 0.625rem;
     line-height: 1.4;
   }
 

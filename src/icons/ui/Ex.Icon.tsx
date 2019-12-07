@@ -1,15 +1,7 @@
-import React from "react";
+import React from 'react'
 
-import { Icon } from '@types';
-
-const ExIcon: Icon = ({ fill = "#08080B" }) => (
-  <svg
-    width="24"
-    height="25"
-    viewBox="0 0 24 25"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
+const ExIcon: React.FC = ({ fill = '#08080B' }) => (
+  <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -25,6 +17,6 @@ const ExIcon: Icon = ({ fill = "#08080B" }) => (
       fill={fill}
     />
   </svg>
-);
+)
 
-export default ExIcon;
+export default ExIcon

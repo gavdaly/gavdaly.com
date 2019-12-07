@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import styled from '@emotion/styled'
 import OutsideClickHandler from 'react-outside-click-handler'
-import { useColorMode } from 'theme-ui'
 import { Link } from 'gatsby'
 
 import Image from '@components/Image'
@@ -32,10 +31,8 @@ interface AuthorsProps {
 
 const CoAuthors: React.FC<AuthorsProps> = ({ authors }) => {
   const [isOpen, setIsOpen] = useState(false)
-  const [colorMode] = useColorMode()
   const names = generateAuthorNames(authors)
 
-  const fill = colorMode === 'dark' ? '#fff' : '#000'
   const listWidth = { width: `${10 + authors.length * 15}px` }
 
   return (
@@ -49,7 +46,7 @@ const CoAuthors: React.FC<AuthorsProps> = ({ authors }) => {
       </CoAuthorsList>
       <NameContainer>{names}</NameContainer>
       <IconContainer>
-        <Icons.ToggleOpen fill={fill} />
+        <Icons.ToggleOpen />
       </IconContainer>
 
       {isOpen && (

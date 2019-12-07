@@ -1,8 +1,6 @@
-import React from 'react';
+import React from 'react'
 
-import { Icon } from '@types';
-
-const BehanceIcon: Icon = ({ fill = "white" }) => (
+const BehanceIcon: React.FC = () => (
   <svg
     version="1.1"
     xmlns="http://www.w3.org/2000/svg"
@@ -11,10 +9,10 @@ const BehanceIcon: Icon = ({ fill = "white" }) => (
     width="17px"
     height="17px"
     viewBox="0 0 430.123 430.123"
+    fill="currentColor"
   >
     <g>
       <path
-        fill={fill}
         d="M388.432,119.12H280.659V92.35h107.782v26.77H388.432z M208.912,228.895
    c6.954,10.771,10.429,23.849,10.429,39.203c0,15.878-3.918,30.122-11.889,42.704c-5.071,8.326-11.367,15.359-18.932,21.021
    c-8.52,6.548-18.607,11.038-30.203,13.437c-11.633,2.403-24.224,3.617-37.787,3.617H0V81.247h129.25
@@ -34,6 +32,6 @@ const BehanceIcon: Icon = ({ fill = "white" }) => (
       />
     </g>
   </svg>
-);
+)
 
-export default BehanceIcon;
+export default BehanceIcon
