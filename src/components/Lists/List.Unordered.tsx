@@ -4,7 +4,7 @@ import mediaqueries from '@styles/media';
 const UnorderedList = styled.ul`
   list-style: none;
   counter-reset: list;
-  color: ${p => p.theme.colors.articleText};
+  color: var(--color-articleText);
   position: relative;
   padding: 15px 0 30px 30px;
   transition: background 0.25s var(--ease-in-out-quad), color 0.25s var(--ease-in-out-quad);
@@ -54,7 +54,7 @@ const UnorderedList = styled.ul`
     width: 3rem;
     display: inline-block;
     position: absolute;
-    color: ${p => p.theme.colors.articleText};
+    color: var(--color-articleText);
   }
 
   li::before {
@@ -64,7 +64,7 @@ const UnorderedList = styled.ul`
     top: 8px;
     height: 8px;
     width: 8px;
-    background: ${p => p.theme.colors.articleText};
+    background: var(--color-articleText);
 
     ${mediaqueries.tablet`
       left: 0;

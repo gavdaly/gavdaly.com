@@ -35,9 +35,7 @@ const ImagePlaceholder: React.FC<{}> = (props) => {
 
   return (
     <Container ref={containerRef} {...props}>
-      <div>
-        {dimensions.width} x {dimensions.height}
-      </div>
+      {dimensions.width} x {dimensions.height}
     </Container>
   );
 };

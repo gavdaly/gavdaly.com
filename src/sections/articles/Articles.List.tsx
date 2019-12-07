@@ -15,6 +15,7 @@ import { GridLayoutContext } from "./Articles.List.Context"
  * Tiles
  * [LONG], [SHORT]
  * [SHORT], [LONG]
+ * [LONG], [SHORT]
  * [SHORT], [LONG]
  *
  * or ------------
@@ -51,7 +52,9 @@ const ArticlesList: React.FC<ArticlesListProps> = ({
    * and turning it into an array of pairs of articles [[{}, {}], [{}, {}], [{}, {}]...]
    * This makes it simpler to create the grid we want
    */
-  const articlePairs = articles.reduce((result, value, index, array) => {
+
+  // In the future switch to index + 1 % 4, 1 & 0 --> long, 2,3 --> short
+  const articlePairs = articles.reduce((result, _value, index, array) => {
     if (index % 2 === 0) {
       result.push(array.slice(index, index + 2))
     }
@@ -62,7 +65,7 @@ const ArticlesList: React.FC<ArticlesListProps> = ({
 
   return (
     <ArticlesListContainer
-      style={{ opacity: hasSetGridLayout ? 1 : 0 }}
+      hasSetGridLayout={hasSetGridLayout}
       alwaysShowAllDetails={alwaysShowAllDetails}
     >
       {articlePairs.map((ap, index) => {
@@ -124,8 +127,8 @@ const ListItem: React.FC<ArticlesListItemProps> = ({ article, narrow }) => {
   )
 }
 
-const wide = "1fr"
-const narrow = "457px"
+const wide = "162fr"
+const narrow = "100fr"
 
 const limitToTwoLines = css`
   text-overflow: ellipsis;
@@ -151,9 +154,10 @@ const showDetails = css`
   }
 `
 
-const ArticlesListContainer = styled.div<{ alwaysShowAllDetails?: boolean }>`
+const ArticlesListContainer = styled.div<{ alwaysShowAllDetails?: boolean; hasSetGridLayout?: boolean }>`
+  opacity: ${p => p.hasSetGridLayout ? 1 : 0};
   transition: opacity 0.25s;
-  ${p => p.alwaysShowAllDetails && showDetails}
+  ${p => p.alwaysShowAllDetails && showDetails};
 `
 
 const listTile = p => css`
@@ -202,7 +206,7 @@ const listItemRow = p => css`
   `}
 
   @media (max-width: 540px) {
-    background: ${p.theme.colors.card};
+    background: var(--color-background);
   }
 
   ${mediaqueries.phablet`
@@ -220,7 +224,7 @@ const listItemTile = p => css`
   `}
 
   @media (max-width: 540px) {
-    background: ${p.theme.colors.card};
+    background: var(--color-card);
   }
 
   ${mediaqueries.phablet`
@@ -307,7 +311,6 @@ const Excerpt = styled.p<{
   ${limitToTwoLines};
   font-size: 16px;
   margin-bottom: 10px;
-  color: ${p => p.theme.colors.grey};
   display: ${p => (p.hasOverflow && p.gridLayout === "tiles" ? "none" : "box")};
   max-width: ${p => (p.narrow ? "415px" : "515px")};
 
@@ -328,10 +331,8 @@ const Excerpt = styled.p<{
 `
 
 const MetaData = styled.div`
-  font-weight: 600;
+  font-weight: 300;
   font-size: 16px;
-  color: ${p => p.theme.colors.grey};
-  opacity: 0.33;
 
   ${mediaqueries.phablet`
     max-width: 100%;
@@ -348,6 +349,7 @@ const ArticleLink = styled(Link)`
   left: 0;
   border-radius: 5px;
   z-index: 1;
+  color: var(--color-primary);
   transition: transform 0.33s var(--ease-out-quart);
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 
@@ -359,7 +361,7 @@ const ArticleLink = styled(Link)`
 
   &:hover h2,
   &:focus h2 {
-    color: ${p => p.theme.colors.accent};
+    color: var(--color-accent);
   }
 
   &[data-a11y="true"]:focus::after {
@@ -369,7 +371,7 @@ const ArticleLink = styled(Link)`
     top: -2%;
     width: 103%;
     height: 104%;
-    border: 3px solid ${p => p.theme.colors.accent};
+    border: 3px solid var(--color-accent);
     background: rgba(255, 255, 255, 0.01);
     border-radius: 5px;
   }

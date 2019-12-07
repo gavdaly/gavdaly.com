@@ -112,7 +112,7 @@ const AuthorAvatar = styled.div`
   width: 25px;
   border-radius: 50%;
   margin-right: 14px;
-  background: ${p => p.theme.colors.grey};
+  background: var(--color-grey);
   overflow: hidden;
 
   .gatsby-image-wrapper > div {
@@ -134,7 +134,7 @@ const AuthorLink = styled.div`
   }
 
   &:hover strong {
-    color: ${p => p.theme.colors.primary};
+    color: var(--color-primary);
   }
 `
 
@@ -155,7 +155,7 @@ const CoAuthorsListOpen = styled.ul`
   right: -21px;
   top: -19px;
   padding: 21px;
-  background: ${p => p.theme.colors.card};
+  background: var(--color-card);
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   cursor: pointer;
@@ -178,7 +178,7 @@ const CoAuthorAvatarOpen = styled.div`
   width: 25px;
   border-radius: 50%;
   margin-right: 15px;
-  background: ${p => p.theme.colors.grey};
+  background: var(--color-grey);
   overflow: hidden;
   pointer-events: none;
 
@@ -194,8 +194,8 @@ const CoAuthorAvatar = styled.div`
   width: 25px;
   border-radius: 50%;
   z-index: 1;
-  background: ${p => p.theme.colors.grey};
-  box-shadow: 0 0 0 2px ${p => p.theme.colors.background};
+  background: var(--color-grey);
+  box-shadow: 0 0 0 2px var(--color-background);
   transition: box-shadow 0.25s ease;
   overflow: hidden;
   pointer-events: none;
@@ -231,7 +231,7 @@ const NameContainer = styled.strong`
 const AuthorNameOpen = styled.strong`
   position: relative;
   cursor: pointer;
-  color: ${p => p.theme.colors.secondary};
+  color: var(--color-secondary);
   font-weight: 600;
 `
 
@@ -261,7 +261,7 @@ const CoAuthorsContainer = styled.div<{ isOpen: boolean }>`
   display: flex;
   align-items: center;
   font-size: 18px;
-  color: ${p => p.theme.colors.grey};
+  color: var(--color-grey);
   cursor: pointer;
 
   &::before {
@@ -271,7 +271,7 @@ const CoAuthorsContainer = styled.div<{ isOpen: boolean }>`
     right: -20px;
     top: -16px;
     bottom: -16px;
-    background: ${p => p.theme.colors.card};
+    background: var(--color-card);
     box-shadow: ${p =>
     p.isOpen ? "none" : " 0px 0px 15px rgba(0, 0, 0, 0.1)"};
     border-radius: 5px;

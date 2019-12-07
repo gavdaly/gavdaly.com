@@ -3,7 +3,7 @@ import prism from "./prism";
 export default {
   prism,
 
-  primary: "#000",
+  primary: "var(--color-primary)",
   secondary: "#73737D",
   grey: "#73737D",
   background: "#fafafa",
@@ -22,7 +22,7 @@ export default {
   modes: {
     dark: {
       grey: "#73737D",
-      primary: "#fff",
+      primary: "#ddd",
       secondary: "#fff",
       accent: "#E9DAAC",
       background: "#111216",

@@ -5,14 +5,13 @@ import mediaqueries from "@styles/media";
 const StyledTable = styled.table`
   position: relative;
   line-height: 1.65;
-  color: ${p => p.theme.colors.grey};
-  font-family: ${p => p.theme.fonts.sansSerif};
+  color: var(--color-grey);
   transition: background 0.25s var(--ease-in-out-quad), color 0.25s var(--ease-in-out-quad);
-  background: ${p => p.theme.colors.card};
+  background: var(--color-card);
   margin: 45px auto 85px;
   width: 100%;
   max-width: 1004px;
-  border: 1px solid ${p => p.theme.colors.horizontalRule};
+  border: 1px solid var(--color-horizontalRule);
   border-radius: 5px;
   overflow: hidden;
   border-collapse: separate;

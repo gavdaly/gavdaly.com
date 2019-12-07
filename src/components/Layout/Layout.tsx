@@ -15,17 +15,15 @@ import { globalStyles } from '@styles';
  * which hides a lot of the mess we need to create our Desktop and Mobile experiences.
  */
 const Layout: React.FC<{}> = ({ children }) => {
-  // const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
   const [colorMode] = useColorMode();
 
-  console.log(`ColorMode`, colorMode)
   useEffect(() => {
     parent.postMessage({ theme: colorMode }, '*');
   }, [colorMode]);
 
   return (
-    <ArticlesContextProvider>
-      <Container>
+    <ArticlesContextProvider >
+      <Container id={colorMode}>
         <Global styles={globalStyles} />
         <NavigationHeader />
         {children}
@@ -39,7 +37,7 @@ export default Layout;
 
 const Container = styled.div`
   position: relative;
-  background: ${p => p.theme.colors.background};
+  background: var(--color-background);
   transition: background 0.25s var(--ease-in-out-quad), color 0.25s var(--ease-in-out-quad);
   min-height: 100vh;
 `;

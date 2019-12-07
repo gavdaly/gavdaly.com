@@ -152,7 +152,7 @@ const Item = styled.div`
     box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.2);
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
-    background: ${p => p.theme.colors.card};
+    background: var(--color-card);
   }
 `
 
@@ -160,7 +160,7 @@ const Title = styled(Headings.h3)`
   font-size: 22px;
   line-height: 1.4;
   margin-bottom: ${p => (p.hasOverflow ? "45px" : "10px")};
-  color: ${p => p.theme.colors.primary};
+  color: var(--color-primary);
   transition: color 0.3s ease-in-out;
   ${limitToTwoLines};
 
@@ -178,7 +178,7 @@ const Excerpt = styled.p<{ narrow: boolean; hasOverflow: boolean }>`
   ${limitToTwoLines};
   font-size: 16px;
   margin-bottom: 10px;
-  color: ${p => p.theme.colors.grey};
+  color: var(--color-grey);
   display: ${p => (p.hasOverflow ? "none" : "box")};
   max-width: ${p => (p.narrow ? "415px" : "515px")};
 
@@ -201,7 +201,7 @@ const Excerpt = styled.p<{ narrow: boolean; hasOverflow: boolean }>`
 const MetaData = styled.div`
   font-weight: 600;
   font-size: 16px;
-  color: ${p => p.theme.colors.grey};
+  color: var(--color-grey);
   opacity: 0.33;
 
   ${mediaqueries.phablet`
@@ -210,7 +210,7 @@ const MetaData = styled.div`
   `}
 `
 
-const ArticleLink = styled(Link)<{ narrow: string }>`
+const ArticleLink = styled(Link) <{ narrow: string }>`
   position: relative;
   display: block;
   width: 100%;
@@ -229,7 +229,7 @@ const ArticleLink = styled(Link)<{ narrow: string }>`
 
   &:hover h2,
   &:focus h2 {
-    color: ${p => p.theme.colors.accent};
+    color: var(--color-accent);
   }
 
   &[data-a11y="true"]:focus::after {
@@ -239,7 +239,7 @@ const ArticleLink = styled(Link)<{ narrow: string }>`
     top: -2%;
     width: 104%;
     height: 104%;
-    border: 3px solid ${p => p.theme.colors.accent};
+    border: 3px solid var(--color-accent);
     background: rgba(255, 255, 255, 0.01);
   }
 

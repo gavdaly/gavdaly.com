@@ -10,7 +10,6 @@ import mediaqueries from "@styles/media"
 
 const commonStyles = p => css`
   font-weight: bold;
-  color: ${p.theme.colors.primary};
 `
 
 const h1 = styled.h1`

@@ -59,7 +59,7 @@ const Trackline = styled.div`
   height: calc(88vh - 40px);
   max-height: 425px;
   width: 1px;
-  background-color: ${p => p.theme.colors.track};
+  background-color: var(--color-track);
   opacity: 0.6;
   overflow: hidden;
 `;
@@ -69,6 +69,6 @@ const ProgressLine = styled.div`
   height: 100%;
   top: -100%;
   width: 1px;
-  background-color: ${p => p.theme.colors.progress};
+  background-color: var(--color-progress);
   left: 0;
 `;

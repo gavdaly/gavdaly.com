@@ -33,10 +33,10 @@ const Copy: React.FC<CopyProps> = ({ toCopy }) => {
           Copied <Icons.Copied fill="#6f7177" />
         </>
       ) : (
-        <>
-          Copy <Icons.Copy fill="#6f7177" />
-        </>
-      )}
+          <>
+            Copy <Icons.Copy fill="#6f7177" />
+          </>
+        )}
     </CopyButton>
   )
 }
@@ -151,7 +151,7 @@ const CopyButton = styled.button`
     top: -2%;
     width: 104%;
     height: 104%;
-    border: 2px solid ${p => p.theme.colors.accent};
+    border: 2px solid var(--color-accent);
     border-radius: 5px;
     background: rgba(255, 255, 255, 0.01);
   }

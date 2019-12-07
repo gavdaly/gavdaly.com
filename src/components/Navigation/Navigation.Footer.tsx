@@ -74,7 +74,7 @@ const FooterContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   padding-bottom: 80px;
-  color: ${p => p.theme.colors.grey};
+  color: var(--color-grey);
 
   ${mediaqueries.tablet`
     flex-direction: column;
@@ -89,7 +89,7 @@ const FooterContainer = styled.div`
 const HoritzontalRule = styled.div`
   position: relative;
   margin: 140px auto 50px;
-  border-bottom: 1px solid ${p => p.theme.colors.horizontalRule};
+  border-bottom: 1px solid var(--color-horizontalRule);
 
   ${mediaqueries.tablet`
     margin: 60px auto;

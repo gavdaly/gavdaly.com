@@ -32,7 +32,7 @@ const ImageZoom: React.FC<{}> = (props) => {
     <ImageWithZoom
       image={image}
       zoomImage={image}
-      onZoom={() => handleImageZoomBackground(theme.colors.background)}
+      onZoom={() => handleImageZoomBackground("var(--color-background)")}
       defaultStyles={{
         zoomImage: {
           borderRadius: "5px",

@@ -51,7 +51,7 @@ const Hero = styled.div`
       content: "";
       width: 100%;
       height: 20px;
-      background: ${p.theme.colors.primary};
+      background: var(--color-primary);
       position: absolute;
       left: 0;
       top: 0;
@@ -62,7 +62,7 @@ const Hero = styled.div`
       content: "";
       width: 100%;
       height: 10px;
-      background: ${p.theme.colors.background};
+      background: var(--color-background);
       position: absolute;
       left: 0;
       top: 10px;
@@ -130,7 +130,7 @@ const HeroSubtitle = styled.div<{ hasCoAUthors: boolean }>`
   position: relative;
   display: flex;
   font-size: 18px;
-  color: ${p => p.theme.colors.grey};
+  color: var(--color-grey);
 
   ${p => mediaqueries.phablet`
     font-size: 14px;
@@ -145,7 +145,7 @@ const HeroSubtitle = styled.div<{ hasCoAUthors: boolean }>`
           right: -20px;
           top: -10px;
           bottom: -10px;
-          border: 1px solid ${p.theme.colors.horizontalRule};
+          border: 1px solid var(--color-horizontalRule);
           opacity: 0.5;
           border-radius: 5px;
         }

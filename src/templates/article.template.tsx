@@ -149,7 +149,7 @@ const FooterNext = styled.h3`
   opacity: 0.25;
   margin-bottom: 100px;
   font-weight: 400;
-  color: ${p => p.theme.colors.primary};
+  color: var(--color-primary);
 
   ${mediaqueries.tablet`
     margin-bottom: 60px;
@@ -158,7 +158,7 @@ const FooterNext = styled.h3`
   &::after {
     content: '';
     position: absolute;
-    background: ${p => p.theme.colors.grey};
+    background: var(--color-grey);
     width: ${(910 / 1140) * 100}%;
     height: 1px;
     right: 0;

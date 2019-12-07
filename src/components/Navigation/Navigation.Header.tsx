@@ -183,7 +183,7 @@ const LogoLink = styled(Link) <{ back: string }>`
     top: -30%;
     width: 120%;
     height: 160%;
-    border: 2px solid ${p => p.theme.colors.accent};
+    border: 2px solid var(--color-accent);
     background: rgba(255, 255, 255, 0.01);
     border-radius: 5px;
   }
@@ -255,7 +255,7 @@ const IconWrapper = styled.button<{ isDark: boolean }>`
     top: -30%;
     width: 100%;
     height: 160%;
-    border: 2px solid ${p => p.theme.colors.accent};
+    border: 2px solid var(--color-accent);
     background: rgba(255, 255, 255, 0.01);
     border-radius: 5px;
   }
@@ -278,9 +278,8 @@ const MoonOrSun = styled.div<{ isDark: boolean }>`
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  border: ${p => (p.isDark ? "4px" : "2px")} solid
-    ${p => p.theme.colors.primary};
-  background: ${p => p.theme.colors.primary};
+  border: 4px solid var(--color-primary);
+  background: var(--color-primary);
   transform: scale(${p => (p.isDark ? 0.55 : 1)});
   transition: all 0.45s ease;
   overflow: ${p => (p.isDark ? "visible" : "hidden")};
@@ -292,7 +291,7 @@ const MoonOrSun = styled.div<{ isDark: boolean }>`
     top: -9px;
     height: 24px;
     width: 24px;
-    border: 2px solid ${p => p.theme.colors.primary};
+    border: 2px solid var(--color-primary);
     border-radius: 50%;
     transform: translate(${p => (p.isDark ? "14px, -14px" : "0, 0")});
     opacity: ${p => (p.isDark ? 0 : 1)};
@@ -308,20 +307,16 @@ const MoonOrSun = styled.div<{ isDark: boolean }>`
     position: absolute;
     top: 50%;
     left: 50%;
-    box-shadow: 0 -23px 0 ${p => p.theme.colors.primary},
-      0 23px 0 ${p => p.theme.colors.primary},
-      23px 0 0 ${p => p.theme.colors.primary},
-      -23px 0 0 ${p => p.theme.colors.primary},
-      15px 15px 0 ${p => p.theme.colors.primary},
-      -15px 15px 0 ${p => p.theme.colors.primary},
-      15px -15px 0 ${p => p.theme.colors.primary},
-      -15px -15px 0 ${p => p.theme.colors.primary};
+    box-shadow: 0 -23px 0 var(--color-primary),
+      0 23px 0 var(--color-primary),
+      23px 0 0 var(--color-primary),
+      -23px 0 0 var(--color-primary),
+      15px 15px 0 var(--color-primary),
+      -15px 15px 0 var(--color-primary),
+      15px -15px 0 var(--color-primary),
+      -15px -15px 0 var(--color-primary);
     transform: scale(${p => (p.isDark ? 1 : 0)});
     transition: all 0.35s ease;
-
-    ${p => mediaqueries.tablet`
-      transform: scale(${p.isDark ? 0.92 : 0});
-    `}
   }
 `
 
@@ -333,7 +328,7 @@ const MoonMask = styled.div<{ isDark: boolean }>`
   width: 24px;
   border-radius: 50%;
   border: 0;
-  background: ${p => p.theme.colors.background};
+  background: var(--color-background);
   transform: translate(${p => (p.isDark ? "14px, -14px" : "0, 0")});
   opacity: ${p => (p.isDark ? 0 : 1)};
   transition: background 0.25s var(--ease-in-out-quad), color 0.25s var(--ease-in-out-quad), transform 0.45s ease;

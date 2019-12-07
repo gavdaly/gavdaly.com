@@ -4,7 +4,7 @@ import mediaqueries from "@styles/media"
 const Paragraph = styled.p`
   line-height: 1.756;
   font-size: 18px;
-  color: ${p => p.theme.colors.articleText};
+  color: var(--color-articleText);
   transition: background 0.25s var(--ease-in-out-quad), color 0.25s var(--ease-in-out-quad);
   margin: 0 auto 35px;
   width: 100%;

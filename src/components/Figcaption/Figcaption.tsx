@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 const Figcaption = styled.figcaption`
-  color: ${p => p.theme.colors.grey};
+  color: var(--color-grey);
   font-size: 14px;
   text-align: center;
   width: 100%;

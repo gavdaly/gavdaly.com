@@ -249,7 +249,7 @@ const MenuFloat = styled.div<{ isDark: boolean }>`
   width: ${MENU_WIDTH}px;
   height: ${MENU_HEIGHT}px;
   padding: 7px 11px 7px 19px;
-  color: ${p => p.theme.colors.grey};
+  color: var(--color-grey);
   background: ${p => (p.isDark ? "#fafafa" : "#000")};
   border-radius: 5px;
   font-size: 18px;

@@ -95,16 +95,16 @@ class Paginator extends Component<IPaginator, {}> {
         // If you find a null in the truncated array then add a spacer
         <Spacer key={`PaginatorPage_spacer_${i}`} aria-hidden={true} />
       ) : (
-        // Otherwise render a PageButton
-        <PageNumberBUtton
-          key={`PaginatorPage_${page}`}
-          to={this.getFullPath(page)}
-          style={{ opacity: current === page ? 1 : 0.3 }}
-          className="Paginator__pageLink"
-        >
-          {page}
-        </PageNumberBUtton>
-      ),
+          // Otherwise render a PageButton
+          <PageNumberBUtton
+            key={`PaginatorPage_${page}`}
+            to={this.getFullPath(page)}
+            style={{ opacity: current === page ? 1 : 0.3 }}
+            className="Paginator__pageLink"
+          >
+            {page}
+          </PageNumberBUtton>
+        ),
     );
   }
 
@@ -155,7 +155,7 @@ export default Paginator;
 
 const paginationItemMixin = p => css`
   line-height: 1;
-  color: ${p.theme.colors.primary};
+  color: var(--color-primary);
   padding: 0;
   width: 6.8rem;
   height: 6.8rem;
@@ -184,7 +184,7 @@ const PageButton = styled(Link)`
   font-weight: 600;
   font-size: 18px;
   text-decoration: none;
-  color: ${p => p.theme.colors.primary};
+  color: var(--color-primary);
   ${paginationItemMixin}
 
   &:hover,
@@ -198,7 +198,7 @@ const PageNumberBUtton = styled(Link)`
   font-weight: 400;
   font-size: 18px;
   text-decoration: none;
-  color: ${p => p.theme.colors.primary};
+  color: var(--color-primary);
   ${paginationItemMixin}
 
   &:hover,
@@ -219,11 +219,11 @@ const Spacer = styled.span`
 const MobileReference = styled.span`
   font-weight: 400;
   ${paginationItemMixin}
-  color: ${p => p.theme.colors.primary};
+  color: var(--color-primary);
 
   em {
     font-style: normal;
-    color: ${p => p.theme.colors.primary};
+    color: var(--color-primary);
   }
 `;
 

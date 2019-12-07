@@ -83,7 +83,7 @@ const SubscriptionContainer = styled.div`
   flex-direction: column;
   padding: 64px 0 55px;
   margin: 10px auto 100px;
-  background: ${p => p.theme.colors.card};
+  background: var(--color-card);
   box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.05);
   z-index: 1;
 
@@ -125,7 +125,7 @@ const Heading = styled(Headings.h3)`
 
 const Text = styled.p`
   margin: 0 auto 30px;
-  color: ${p => p.theme.colors.grey};
+  color: var(--color-grey);
   line-height: 1.75;
 
   ${mediaqueries.tablet`
@@ -142,7 +142,7 @@ const Form = styled.form<{ hasError: string }>`
     position: absolute;
     left: 21px;
     top: 10px;
-    color: ${p => (p.hasError ? p.theme.colors.error : p.theme.colors.accent)};
+    color: ${p => p.hasError ? "var(--color-error)" : "var(--color-accent)"};
 
     ${mediaqueries.tablet`
     left: 34px;
@@ -155,25 +155,25 @@ const Input = styled.input<{ hasError: string }>`
   position: relative;
   background: ${p =>
     p.hasError
-      ? p.theme.colors.errorBackground
-      : p.theme.colors.inputBackground};
+      ? 'var(--color-errorBackground)'
+      : 'var(--color-inputBackground)'};
   border-radius: 35px;
   border: none;
   padding: 13px 21px 13px 35px;
   width: 471px;
-  color: ${p => p.theme.colors.primary};
+  color: var(--color-primary);
 
   ::placeholder {
-    color: ${p => p.theme.colors.track};
+    color: var(--color-track);
     opacity: 1;
   }
 
   :-ms-input-placeholder {
-    color: ${p => p.theme.colors.track};
+    color: var(--color-track);
   }
 
   ::-ms-input-placeholder {
-    color: ${p => p.theme.colors.track};
+    color: var(--color-track);
   }
 
   ${mediaqueries.tablet`
@@ -194,9 +194,9 @@ const Button = styled.button<{ hasError: string; subscribed: boolean }>`
   width: 161px;
   height: 38px;
   border: 1px solid
-    ${p => (p.hasError ? p.theme.colors.error : p.theme.colors.accent)};
-  color: ${p => (p.hasError ? p.theme.colors.error : p.theme.colors.accent)};
-  background: ${p => (p.subscribed ? p.theme.colors.accent : "transparent")};
+    ${p => (p.hasError ? 'var(--color-error)' : 'var(--color-accent)')};
+  color: ${p => (p.hasError ? 'var(--color-error)' : 'var(--color-accent)')};
+  background: ${p => (p.subscribed ? 'var(--color-accent)' : "transparent")};
   font-weight: 600;
   border-radius: 35px;
   letter-spacing: 0.42px;
@@ -205,8 +205,8 @@ const Button = styled.button<{ hasError: string; subscribed: boolean }>`
 
   &:hover {
     background: ${p =>
-      p.hasError ? p.theme.colors.error : p.theme.colors.accent};
-    color: ${p => p.theme.colors.background};
+    p.hasError ? 'var(--color-error)' : 'var(--color-accent)'};
+    color: var(--color-background);
   }
 
   &[disabled] {
@@ -214,7 +214,7 @@ const Button = styled.button<{ hasError: string; subscribed: boolean }>`
   }
 
   svg * {
-    fill: ${p => p.theme.colors.background};
+    fill:'var(--color-background)';
   }
 
   ${p => mediaqueries.tablet`
@@ -225,7 +225,7 @@ const Button = styled.button<{ hasError: string; subscribed: boolean }>`
     left: 0;
     border: none;
     border-radius: 0;
-    border-top: 1px solid ${p.theme.colors.horizontalRule};
+    border-top: 1px solid var(--color-horizontalRule);
 
     &:hover {
       color: initial;
@@ -238,11 +238,11 @@ const Error = styled.div`
   position: absolute;
   left: 35px;
   bottom: -20px;
-  color: ${p => p.theme.colors.error};
+  color: var(--color-error);
   font-size: 12px;
 
   a {
-    color: ${p => p.theme.colors.error};
+    color: var(--color-error);
     text-decoration: underline;
   }
 
