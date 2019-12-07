@@ -9,48 +9,12 @@ import Logo from "../../components/Logo"
 import Icons from "../../icons"
 import mediaqueries from "../../styles/media"
 import {
-  copyToClipboard,
   getWindowDimensions,
   getBreakpointFromTheme,
 } from "../../utils"
 
-import { ToolTip } from "../ToolTip"
 import { DarkModeToggle } from "@components/DarkModeToggle"
-import { IconWrapper } from "@components/IconWrapper"
-
-
-const SharePageButton: React.FC<{}> = () => {
-  const [hasCopied, setHasCopied] = useState<boolean>(false)
-  const [colorMode] = useColorMode()
-  const isDark = colorMode === `dark`
-  const fill = isDark ? "#fff" : "#000"
-
-  function copyToClipboardOnClick() {
-    if (hasCopied) return
-
-    copyToClipboard(window.location.href)
-    setHasCopied(true)
-
-    setTimeout(() => {
-      setHasCopied(false)
-    }, 1000)
-  }
-
-  return (
-    <IconWrapper
-      isDark={isDark}
-      onClick={copyToClipboardOnClick}
-      data-a11y="false"
-      aria-label="Copy URL to clipboard"
-      title="Copy URL to clipboard"
-    >
-      <Icons.Link fill={fill} />
-      <ToolTip isDark={isDark} hasCopied={hasCopied}>
-        Copied
-      </ToolTip>
-    </IconWrapper>
-  )
-}
+import { SharePageButton } from "@components/SharePageButton"
 
 const NavigationHeader: React.FC = () => {
   const [showBackArrow, setShowBackArrow] = useState<boolean>(false)
