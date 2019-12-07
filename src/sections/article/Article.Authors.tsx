@@ -1,13 +1,13 @@
-import React, { useState } from "react"
-import styled from "@emotion/styled"
-import OutsideClickHandler from "react-outside-click-handler"
-import { useColorMode } from "theme-ui"
-import { Link } from "gatsby"
+import React, { useState } from 'react'
+import styled from '@emotion/styled'
+import OutsideClickHandler from 'react-outside-click-handler'
+import { useColorMode } from 'theme-ui'
+import { Link } from 'gatsby'
 
-import Image from "@components/Image"
-import Icons from "@icons"
-import mediaqueries from "@styles/media"
-import { IAuthor } from "@types"
+import Image from '@components/Image'
+import Icons from '@icons'
+import mediaqueries from '@styles/media'
+import { IAuthor } from '@types'
 
 /**
  * When generating the author names we're also checking to see how long the
@@ -18,12 +18,12 @@ function generateAuthorNames(authors: IAuthor[]) {
   return authors
     .map(author => {
       if (authors.length > 2) {
-        return author.name.split(" ")[0]
+        return author.name.split(' ')[0]
       } else {
         return author.name
       }
     })
-    .join(", ")
+    .join(', ')
 }
 
 interface AuthorsProps {
@@ -35,7 +35,7 @@ const CoAuthors: React.FC<AuthorsProps> = ({ authors }) => {
   const [colorMode] = useColorMode()
   const names = generateAuthorNames(authors)
 
-  const fill = colorMode === "dark" ? "#fff" : "#000"
+  const fill = colorMode === 'dark' ? '#fff' : '#000'
   const listWidth = { width: `${10 + authors.length * 15}px` }
 
   return (
@@ -60,10 +60,7 @@ const CoAuthors: React.FC<AuthorsProps> = ({ authors }) => {
             </IconOpenContainer>
             {authors.map(author => (
               <CoAuthorsListItemOpen key={author.name}>
-                <AuthorLink
-                  as={author.authorsPage ? Link : "div"}
-                  to={author.slug}
-                >
+                <AuthorLink as={author.authorsPage ? Link : 'div'} to={author.slug}>
                   <CoAuthorAvatarOpen>
                     <Image src={author.avatar.small} />
                   </CoAuthorAvatarOpen>
@@ -85,16 +82,12 @@ const CoAuthors: React.FC<AuthorsProps> = ({ authors }) => {
 const ArticleAuthors: React.FC<AuthorsProps> = ({ authors }) => {
   const hasCoAuthors = authors.length > 1
 
-  console.log(authors)
   // Special dropdown UI for multiple authors
   if (hasCoAuthors) {
     return <CoAuthors authors={authors} />
   } else {
     return (
-      <AuthorLink
-        as={authors[0].authorsPage ? Link : "div"}
-        to={authors[0].slug}
-      >
+      <AuthorLink as={authors[0].authorsPage ? Link : 'div'} to={authors[0].slug}>
         <AuthorAvatar>
           <Image src={authors[0].avatar.small} />
         </AuthorAvatar>
@@ -265,15 +258,14 @@ const CoAuthorsContainer = styled.div<{ isOpen: boolean }>`
   cursor: pointer;
 
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     left: -20px;
     right: -20px;
     top: -16px;
     bottom: -16px;
     background: var(--color-card);
-    box-shadow: ${p =>
-    p.isOpen ? "none" : " 0px 0px 15px rgba(0, 0, 0, 0.1)"};
+    box-shadow: ${p => (p.isOpen ? 'none' : ' 0px 0px 15px rgba(0, 0, 0, 0.1)')};
     border-radius: 5px;
     z-index: 0;
     transition: opacity 0.3s;
