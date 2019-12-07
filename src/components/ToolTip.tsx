@@ -1,8 +1,8 @@
 import styled from "@emotion/styled"
 
 export const ToolTip = styled.div<{
-    isDark: boolean;
-    hasCopied: boolean;
+  isDark: boolean;
+  hasCopied: boolean;
 }> `
   position: absolute;
   padding: 4px 13px;
