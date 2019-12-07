@@ -1,8 +1,6 @@
-import { css } from "@emotion/core";
+import { css } from '@emotion/core'
 
-import theme from "../gatsby-plugin-theme-ui";
-
-const toEm = (size: number) => size / 16 + "em";
+const toEm = (size: number) => size / 16 + 'em'
 
 /**
  * All breakpoints can be found inside of theme.breakpoints.
@@ -16,8 +14,18 @@ const toEm = (size: number) => size / 16 + "em";
  *    ${mediaqueries.tablet_up` width: 200px; `};
  */
 
-const mediaqueries = theme.breakpoints.reduce(
-  (acc, [label, size], i) => ({
+const breakpoints = [
+  ['phone_small', 320],
+  ['phone', 376],
+  ['phablet', 540],
+  ['tablet', 735],
+  ['desktop', 1070],
+  ['desktop_medium', 1280],
+  ['desktop_large', 1440],
+]
+
+const mediaqueries = breakpoints.reduce(
+  (acc, [label, size]: [string, number], i) => ({
     ...acc,
     // max-width media query e.g. mediaqueries.desktop
     [label]: (...args) => css`
@@ -28,14 +36,14 @@ const mediaqueries = theme.breakpoints.reduce(
     // min-width media query e.g. mediaqueries.desktop_up
     // This is the breakpoint prior's size +1
     [`${label}_up`]: (...args) => css`
-      @media (min-width: ${toEm(theme.breakpoints[i - 1][1] + 1)}) {
+      @media (min-width: ${toEm(breakpoints[i - 1][1] + 1)}) {
         ${css(...args)};
       }
     `,
   }),
   {},
-);
+)
 
-export const media = mediaqueries;
+export const media = mediaqueries
 
-export default mediaqueries;
+export default mediaqueries
