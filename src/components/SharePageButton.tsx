@@ -1,43 +1,41 @@
-import React, { useState } from 'react';
-import { useColorMode } from "theme-ui"
-import Icons from "../icons"
+import React, { useState } from 'react'
+import Icons from '../icons'
 
-import { IconWrapper } from "@components/IconWrapper"
-import { ToolTip } from "./ToolTip"
-import {
-    copyToClipboard
-} from "../utils"
+import { IconWrapper } from '@components/IconWrapper'
+import { ToolTip } from './ToolTip'
 
+enum copyState {
+  waiting,
+  copied,
+}
 
 export const SharePageButton: React.FC<{}> = () => {
-    const [hasCopied, setHasCopied] = useState<boolean>(false)
-    const [colorMode] = useColorMode()
-    const isDark = colorMode === `dark`
-    const fill = isDark ? "#fff" : "#000"
+  const [hasCopied, setHasCopied] = useState<copyState>(copyState.waiting)
 
-    function copyToClipboardOnClick() {
-        if (hasCopied) return
+  function copyToClipboardOnClick() {
+    if (hasCopied === copyState.copied) return
+    ;(async () => {
+      await navigator.clipboard.writeText(window.location.href)
+    })()
 
-        copyToClipboard(window.location.href)
-        setHasCopied(true)
+    setHasCopied(copyState.copied)
 
-        setTimeout(() => {
-            setHasCopied(false)
-        }, 1000)
-    }
+    setTimeout(() => {
+      setHasCopied(copyState.waiting)
+    }, 1000)
+  }
 
-    return (
-        <IconWrapper
-            isDark={isDark}
-            onClick={copyToClipboardOnClick}
-            data-a11y="false"
-            aria-label="Copy URL to clipboard"
-            title="Copy URL to clipboard"
-        >
-            <Icons.Link fill={fill} />
-            <ToolTip isDark={isDark} hasCopied={hasCopied}>
-                Copied
-        </ToolTip>
-        </IconWrapper>
-    )
+  return (
+    <>
+      <IconWrapper
+        onClick={copyToClipboardOnClick}
+        data-a11y="false"
+        aria-label="Copy URL to clipboard"
+        title="Copy URL to clipboard"
+      >
+        <Icons.Link />
+        <ToolTip className={hasCopied === copyState.copied ? 'copied' : ''}>Copied</ToolTip>
+      </IconWrapper>
+    </>
+  )
 }

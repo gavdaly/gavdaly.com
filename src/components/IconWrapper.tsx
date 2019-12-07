@@ -1,9 +1,7 @@
-import styled from "@emotion/styled"
-import mediaqueries from "@styles/media"
+import styled from '@emotion/styled'
+import mediaqueries from '@styles/media'
 
-export const IconWrapper = styled.button<{
-    isDark: boolean;
-}> `
+export const IconWrapper = styled.button`
   opacity: 0.5;
   position: relative;
   border-radius: 5px;
@@ -19,8 +17,8 @@ export const IconWrapper = styled.button<{
     opacity: 1;
   }
 
-  &[data-a11y="true"]:focus::after {
-    content: "";
+  &[data-a11y='true']:focus::after {
+    content: '';
     position: absolute;
     left: 0;
     top: -30%;

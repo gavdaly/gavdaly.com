@@ -1,22 +1,26 @@
-import styled from "@emotion/styled"
+import styled from '@emotion/styled'
 
-export const ToolTip = styled.div<{
-  isDark: boolean;
-  hasCopied: boolean;
-}> `
+export const ToolTip = styled.div`
   position: absolute;
   padding: 4px 13px;
-  background: ${p => (p.isDark ? "#000" : "rgba(0,0,0,0.1)")};
-  color: ${p => (p.isDark ? "#fff" : "#000")};
+  background: var(--color-tooltip-background);
+  color: var(--color-tooltip);
   border-radius: 5px;
   font-size: 14px;
   top: -35px;
-  opacity: ${p => (p.hasCopied ? 1 : 0)};
-  transform: ${p => (p.hasCopied ? "translateY(-3px)" : "none")};
+  opacity: 0;
+  display: none;
+  transform: translateY(-3px);
   transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
 
+  &.copied {
+    opacity: 1;
+    display: block;
+    transform: none;
+  }
+
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     left: 0;
     right: 0;
@@ -26,6 +30,6 @@ export const ToolTip = styled.div<{
     height: 0;
     border-left: 6px solid transparent;
     border-right: 6px solid transparent;
-    border-top: 6px solid ${p => (p.isDark ? "#000" : "rgba(0,0,0,0.1)")};
+    border-top: 6px solid var(--color-tooltip-background);
   }
 `

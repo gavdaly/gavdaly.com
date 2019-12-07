@@ -1,4 +1,4 @@
-import { css } from "@emotion/core"
+import { css } from '@emotion/core'
 
 export const globalStyles = css`
   /**
@@ -14,22 +14,23 @@ export const globalStyles = css`
     --ease-in-out-quart: cubic-bezier(0.77, 0, 0.175, 1);
 
     --color-primary: #333;
-    --color-secondary: #73737D;
-    --color-grey: #73737D;
+    --color-secondary: #73737d;
+    --color-grey: #73737d;
     --color-background: #fafafa;
-    --color-accent: #6166DC;
+    --color-accent: #6166dc;
     --color-hover: rgba(0, 0, 0, 0.07);
-    --color-gradient: linear-gradient(180deg, rgba(217, 219, 224, 0) 0%, #D9DBE0 100%);
-    --color-articleText: #08080B;
+    --color-gradient: linear-gradient(180deg, rgba(217, 219, 224, 0) 0%, #d9dbe0 100%);
+    --color-articleText: #08080b;
     --color-track: rgba(8, 8, 11, 0.3);
     --color-progress: #000;
     --color-card: #fff;
-    --color-error: #EE565B;
-    --color-success: #46B17B;
+    --color-error: #ee565b;
+    --color-success: #46b17b;
     --color-errorBackground: rgba(238, 86, 91, 0.1);
     --color-horizontalRule: rgba(8, 8, 11, 0.15);
     --color-inputBackground: rgba(0, 0, 0, 0.05);
-
+    --color-tooltip: #000;
+    --color-tooltip-background: rgba(0, 0, 0, 0.1);
 
     -ms-overflow-style: -ms-autohiding-scrollbar;
     box-sizing: border-box;
@@ -43,22 +44,24 @@ export const globalStyles = css`
 
   #dark {
     --color-primary: #eee;
-    --color-grey: #73737D;
+    --color-grey: #73737d;
     --color-primary: #ddd;
     --color-secondary: #fff;
-    --color-accent: #E9DAAC;
+    --color-accent: #e9daac;
     --color-background: #111216;
     --color-hover: rgba(255, 255, 255, 0.07);
     --color-gradient: linear-gradient(180deg, #111216 0%, rgba(66, 81, 98, 0.36) 100%);
     --color-articleText: #fff;
     --color-track: rgba(255, 255, 255, 0.3);
     --color-progress: #fff;
-    --color-card: #1D2128;
-    --color-error: #EE565B;
-    --color-success: #46B17B;
+    --color-card: #1d2128;
+    --color-error: #ee565b;
+    --color-success: #46b17b;
     --color-errorBackground: rgba(238, 86, 91, 0.1);
     --color-horizontalRule: rgba(255, 255, 255, 0.15);
     --color-inputBackground: rgba(255, 255, 255, 0.07);
+    --color-tooltip: #fff;
+    --color-tooltip-background: #000;
 
     color: var(--color-primary);
     background-color: var(--color-background);
@@ -75,9 +78,8 @@ export const globalStyles = css`
   }
 
   body {
-    font-family: "FF Meta VF", -apple-system, BlinkMacSystemFont, "Segoe UI",
-      Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
-      sans-serif;
+    font-family: 'FF Meta VF', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
+      'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 1.6rem;
     margin: 0;
     font-weight: 400;
@@ -107,9 +109,8 @@ export const globalStyles = css`
   textarea,
   select,
   button {
-    font-family: "FF Meta VF", -apple-system, BlinkMacSystemFont, "Segoe UI",
-      Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
-      sans-serif;
+    font-family: 'FF Meta VF', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
+      'Open Sans', 'Helvetica Neue', sans-serif;
   }
 
   .underline {
@@ -160,7 +161,7 @@ export const globalStyles = css`
       outline: none;
     }
 
-    &[type="number"] {
+    &[type='number'] {
       width: auto;
     }
   }

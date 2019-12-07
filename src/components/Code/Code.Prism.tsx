@@ -1,12 +1,11 @@
-import React, { useState } from "react"
-import Highlight, { defaultProps, Language } from "prism-react-renderer"
-import styled from "@emotion/styled"
-import { LiveProvider, LiveEditor, LiveError, LivePreview } from "react-live"
-import theme from "prism-react-renderer/themes/oceanicNext"
+import React, { useState } from 'react'
+import Highlight, { defaultProps, Language } from 'prism-react-renderer'
+import styled from '@emotion/styled'
+import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live'
+import theme from 'prism-react-renderer/themes/oceanicNext'
 
-import Icons from "@icons"
-import mediaqueries from "@styles/media"
-import { copyToClipboard } from "@utils"
+import Icons from '@icons'
+import mediaqueries from '@styles/media'
 
 interface CopyProps {
   toCopy: string
@@ -17,8 +16,9 @@ const Copy: React.FC<CopyProps> = ({ toCopy }) => {
 
   function copyToClipboardOnClick() {
     if (hasCopied) return
-
-    copyToClipboard(toCopy)
+    ;(async () => {
+      await navigator.clipboard.writeText(toCopy)
+    })()
     setHasCopied(true)
 
     setTimeout(() => {
@@ -33,10 +33,10 @@ const Copy: React.FC<CopyProps> = ({ toCopy }) => {
           Copied <Icons.Copied fill="#6f7177" />
         </>
       ) : (
-          <>
-            Copy <Icons.Copy fill="#6f7177" />
-          </>
-        )}
+        <>
+          Copy <Icons.Copy fill="#6f7177" />
+        </>
+      )}
     </CopyButton>
   )
 }
@@ -46,8 +46,8 @@ const RE = /{([\d,-]+)}/
 function calculateLinesToHighlight(meta) {
   if (RE.test(meta)) {
     const lineNumbers = RE.exec(meta)[1]
-      .split(",")
-      .map(v => v.split("-").map(y => parseInt(y, 10)))
+      .split(',')
+      .map(v => v.split('-').map(y => parseInt(y, 10)))
 
     return index => {
       const lineNumber = index + 1
@@ -67,21 +67,16 @@ interface CodePrismProps {
   metastring?: string
 }
 
-const CodePrism: React.FC<CodePrismProps> = ({
-  codeString,
-  language,
-  metastring,
-  ...props
-}) => {
+const CodePrism: React.FC<CodePrismProps> = ({ codeString, language, metastring, ...props }) => {
   const shouldHighlightLine = calculateLinesToHighlight(metastring)
 
-  if (props["live"]) {
+  if (props['live']) {
     return (
       <Container>
         <LiveProvider code={codeString} noInline={true} theme={theme}>
-          <LiveEditor style={{ marginBottom: "3px", borderRadius: "2px" }} />
-          <LivePreview style={{ fontSize: "18px", borderRadius: "2px" }} />
-          <LiveError style={{ color: "tomato" }} />
+          <LiveEditor style={{ marginBottom: '3px', borderRadius: '2px' }} />
+          <LivePreview style={{ fontSize: '18px', borderRadius: '2px' }} />
+          <LiveError style={{ color: 'tomato' }} />
         </LiveProvider>
       </Container>
     )
@@ -90,16 +85,14 @@ const CodePrism: React.FC<CodePrismProps> = ({
       <Highlight {...defaultProps} code={codeString} language={language}>
         {({ className, tokens, getLineProps, getTokenProps }) => {
           return (
-            <div style={{ overflow: "auto" }}>
-              <pre className={className} style={{ position: "relative" }}>
+            <div style={{ overflow: 'auto' }}>
+              <pre className={className} style={{ position: 'relative' }}>
                 <Copy toCopy={codeString} />
                 {tokens.map((line, index) => {
                   const { className } = getLineProps({
                     line,
                     key: index,
-                    className: shouldHighlightLine(index)
-                      ? "highlight-line"
-                      : "",
+                    className: shouldHighlightLine(index) ? 'highlight-line' : '',
                   })
 
                   return (
@@ -144,8 +137,8 @@ const CopyButton = styled.button`
     background: rgba(255, 255, 255, 0.07);
   }
 
-  &[data-a11y="true"]:focus::after {
-    content: "";
+  &[data-a11y='true']:focus::after {
+    content: '';
     position: absolute;
     left: -2%;
     top: -2%;
