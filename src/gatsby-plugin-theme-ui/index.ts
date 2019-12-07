@@ -1,5 +1,3 @@
-import merge from "lodash/merge"
-
 import colors from "./colors"
 import tags from "./tags"
 
@@ -14,10 +12,10 @@ const breakpoints = [
 ]
 
 
-export default merge({
+export default {
   initialColorMode: "light",
   useCustomProperties: true,
   colors,
   breakpoints,
   tags,
-})
+}
