@@ -67,7 +67,7 @@ const Logo: Icon = () => {
 export default Logo
 
 const LogoContainer = styled.div`
-  max-width: 10vw;
+  max-width: 15vw;
   .Logo__Mobile {
     display: none;
   }
