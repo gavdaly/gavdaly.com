@@ -44,7 +44,7 @@ const Container = styled.div`
     'header'
     'main'
     'footer';
-
+  padding: 1rem;
   #header {
     grid-area: header;
   }

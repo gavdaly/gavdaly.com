@@ -2,7 +2,6 @@ import React from 'react'
 import styled from '@emotion/styled'
 import { Link } from 'gatsby'
 
-import Section from '../../components/Section'
 import Logo from '../../components/Logo'
 
 import mediaqueries from '../../styles/media'
@@ -11,22 +10,15 @@ import { DarkModeToggle } from '@components/DarkModeToggle'
 import { SharePageButton } from '@components/SharePageButton'
 
 const NavigationHeader: React.FC = () => (
-  <Section>
-    <NavContainer>
-      <LogoLink
-        to="/"
-        data-a11y="false"
-        title="Navigate back to the homepage"
-        aria-label="Navigate back to the homepage"
-      >
-        <Logo />
-      </LogoLink>
-      <NavControls>
-        <SharePageButton />
-        <DarkModeToggle />
-      </NavControls>
-    </NavContainer>
-  </Section>
+  <NavContainer>
+    <LogoLink to="/" data-a11y="false" title="Navigate back to the homepage" aria-label="Navigate back to the homepage">
+      <Logo />
+    </LogoLink>
+    <NavControls>
+      <SharePageButton />
+      <DarkModeToggle />
+    </NavControls>
+  </NavContainer>
 )
 
 export default NavigationHeader

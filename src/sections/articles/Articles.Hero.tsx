@@ -1,14 +1,13 @@
-import React, { useContext } from 'react';
-import { graphql, useStaticQuery } from 'gatsby';
-import styled from '@emotion/styled';
+import React, { useContext } from 'react'
+import { graphql, useStaticQuery } from 'gatsby'
+import styled from '@emotion/styled'
 
-import Section from '@components/Section';
-import Bio from '@components/Bio';
-import Icons from '@icons';
-import mediaqueries from '@styles/media';
-import { IAuthor } from '@types';
+import Bio from '@components/Bio'
+import Icons from '@icons'
+import mediaqueries from '@styles/media'
+import { IAuthor } from '@types'
 
-import { GridLayoutContext } from './Articles.List.Context';
+import { GridLayoutContext } from './Articles.List.Context'
 
 const authorQuery = graphql`
   {
@@ -25,27 +24,25 @@ const authorQuery = graphql`
       }
     }
   }
-`;
+`
 
 const ArticlesHero: React.FC<IAuthor> = ({ authors }) => {
-  const { gridLayout = 'tiles', hasSetGridLayout, setGridLayout } = useContext(
-    GridLayoutContext,
-  );
+  const { gridLayout = 'tiles', hasSetGridLayout, setGridLayout } = useContext(GridLayoutContext)
 
-  const results = useStaticQuery(authorQuery);
-  const hero = results.site.edges[0].node.siteMetadata.hero;
-  const tilesIsActive = hasSetGridLayout && gridLayout === 'tiles';
-  const featuredAuthor = authors.find(author => author.featured);
+  const results = useStaticQuery(authorQuery)
+  const hero = results.site.edges[0].node.siteMetadata.hero
+  const tilesIsActive = hasSetGridLayout && gridLayout === 'tiles'
+  const featuredAuthor = authors.find(author => author.featured)
 
   if (!featuredAuthor) {
     throw new Error(`
       No featured Author found.
       Please ensure you have at least featured Author.
-  `);
+  `)
   }
 
   return (
-    <Section relative id="Articles__Hero">
+    <section relative id="Articles__Hero">
       <HeadingContainer style={{ maxWidth: `${hero.maxWidth}px` }}>
         <HeroHeading dangerouslySetInnerHTML={{ __html: hero.heading }} />
       </HeadingContainer>
@@ -72,11 +69,11 @@ const ArticlesHero: React.FC<IAuthor> = ({ authors }) => {
           </GridButton>
         </GridControlsContainer>
       </SubheadingContainer>
-    </Section>
-  );
-};
+    </section>
+  )
+}
 
-export default ArticlesHero;
+export default ArticlesHero
 
 const SubheadingContainer = styled.div`
   display: flex;
@@ -95,7 +92,7 @@ const SubheadingContainer = styled.div`
   ${mediaqueries.phablet`
     display: none;
   `};
-`;
+`
 
 const GridControlsContainer = styled.div`
   display: flex;
@@ -104,7 +101,7 @@ const GridControlsContainer = styled.div`
   ${mediaqueries.tablet`
     display: none;
   `};
-`;
+`
 
 const HeadingContainer = styled.div`
   margin: 100px 0;
@@ -116,7 +113,7 @@ const HeadingContainer = styled.div`
   ${mediaqueries.tablet`
     width: 100%;
   `}
-`;
+`
 
 const HeroHeading = styled.h1`
   font-style: normal;
@@ -136,7 +133,7 @@ const HeroHeading = styled.h1`
   ${mediaqueries.phablet`
     font-size: 32px;
   `}
-`;
+`
 
 const GridButton = styled.button<{ active: boolean }>`
   position: relative;
@@ -177,4 +174,4 @@ const GridButton = styled.button<{ active: boolean }>`
       fill: var(--color-primary);
     }
   }
-`;
+`
