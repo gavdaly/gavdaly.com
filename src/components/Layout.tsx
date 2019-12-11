@@ -4,10 +4,11 @@ import styled from '@emotion/styled'
 import { useColorMode } from 'theme-ui'
 
 import NavigationFooter from '@components/Navigation/Navigation.Footer'
+import { Navigation } from '@components/Navigation'
 import { LogoLink } from '@components/LogoLink'
 import { PageControls } from '@components/PageControls'
 
-import ArticlesContextProvider from '../../sections/articles/Articles.List.Context'
+import ArticlesContextProvider from '../sections/articles/Articles.List.Context'
 
 import { globalStyles } from '@styles'
 
@@ -27,8 +28,11 @@ export const Layout: React.FC<{}> = ({ children }) => {
     <ArticlesContextProvider>
       <Container id={colorMode}>
         <Global styles={globalStyles} />
-        <LogoLink id='logo' />
-        <PageControls id='controls' />
+        <div id="logo">
+          <LogoLink />
+        </div>
+        <PageControls />
+        <Navigation />
         <main id="main">{children}</main>
         <NavigationFooter id="footer" />
       </Container>
@@ -44,9 +48,10 @@ const Container = styled.div`
   min-height: 100vh;
   display: grid;
   grid-template-areas:
-    'logo controls'
-    'main main'
-    'footer footer';
+    'logo . controls'
+    'main main main'
+    'footer footer footer';
+  grid-template-rows: auto 1fr auto;
   padding: 1rem;
   #logo {
     grid-area: logo;
@@ -59,5 +64,17 @@ const Container = styled.div`
   }
   #footer {
     grid-area: footer;
+  }
+  @media (min-width: 44rem) {
+    grid-template-areas:
+      'logo controls'
+      'navigation navigation'
+      'main main'
+      'footer footer';
+    grid-template-rows: auto auto 1fr auto;
+    #navigation {
+      grid-area: navigation;
+    }
+    background-color: yellow;
   }
 `
