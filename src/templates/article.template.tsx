@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react'
+import React, { useRef, useState, useEffect, RefObject } from 'react'
 import styled from '@emotion/styled'
 import throttle from 'lodash/throttle'
 import { graphql, useStaticQuery } from 'gatsby'
@@ -8,7 +8,7 @@ import MDXRenderer from '@components/MDX'
 import Progress from '@components/Progress'
 import Subscription from '@components/Subscription'
 
-import { debounce } from '@utils'
+import { debounce, clamp } from '@utils'
 
 import ArticleHero from '../sections/article/Article.Hero'
 import ArticlesNext from '../sections/article/Article.Next'
@@ -31,20 +31,15 @@ const siteQuery = graphql`
   }
 `
 
-const Article: Template = ({ pageContext, location }) => {
-  const contentSectionRef = useRef<HTMLElement>(null)
-
+const useHeightPercent = (ref: RefObject<HTMLElement>): number => {
   const [hasCalculated, setHasCalculated] = useState<boolean>(false)
   const [contentHeight, setContentHeight] = useState<number>(0)
-
-  const results = useStaticQuery(siteQuery)
-  const name = results.allSite.edges[0].node.siteMetadata.name
-
-  const { article, authors, mailchimp, next } = pageContext
+  const [progress, setProgress] = useState<number>(0)
 
   useEffect(() => {
     const calculateBodySize = throttle(() => {
-      const contentSection = contentSectionRef.current
+
+      const contentSection = ref.current
 
       if (!contentSection) return
 
@@ -76,6 +71,36 @@ const Article: Template = ({ pageContext, location }) => {
     return () => window.removeEventListener('resize', calculateBodySize)
   }, [])
 
+  useEffect(() => {
+    console.log(`Content Height: `, contentHeight)
+    const handleScroll = throttle(() => {
+      const percentComplete = (window.scrollY / contentHeight) * 100
+
+      setProgress(clamp(+percentComplete.toFixed(2), -2, 104))
+    }, 20)
+
+    if (contentHeight) {
+      window.addEventListener('scroll', handleScroll)
+      window.addEventListener('resize', handleScroll)
+      return () => {
+        window.removeEventListener('scroll', handleScroll)
+        window.removeEventListener('resize', handleScroll)
+      }
+    }
+  }, [contentHeight])
+
+  return progress
+}
+
+const Article: Template = ({ pageContext, location }) => {
+  const contentSectionRef = useRef<HTMLElement>(null)
+  const contentHeight = useHeightPercent(contentSectionRef)
+
+  const results = useStaticQuery(siteQuery)
+  const name = results.allSite.edges[0].node.siteMetadata.name
+
+  const { article, authors, mailchimp, next } = pageContext
+
   return (
     <>
       <ArticleSEO article={article} authors={authors} location={location} />
@@ -94,7 +119,7 @@ const Article: Template = ({ pageContext, location }) => {
           </NextArticle>
         )}
       </Layout>
-      <Progress contentHeight={contentHeight} />
+      <Progress percentComplete={contentHeight} />
     </>
   )
 }
@@ -110,8 +135,6 @@ const NextArticle = styled.section`
 `
 
 const FooterNext = styled.h3`
-  position: relative;
-  opacity: 0.25;
   margin-bottom: 100px;
   font-weight: 400;
   color: var(--color-primary);

@@ -42,7 +42,7 @@ const ArticlesHero: React.FC<IAuthor> = ({ authors }) => {
   }
 
   return (
-    <section relative id="Articles__Hero">
+    <section id="Articles__Hero">
       <HeadingContainer style={{ maxWidth: `${hero.maxWidth}px` }}>
         <HeroHeading dangerouslySetInnerHTML={{ __html: hero.heading }} />
       </HeadingContainer>
@@ -136,7 +136,6 @@ const HeroHeading = styled.h1`
 `
 
 const GridButton = styled.button<{ active: boolean }>`
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;

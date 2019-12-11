@@ -3,9 +3,9 @@ module.exports = {
     title: `GavDaly`,
     name: `GavDaly`,
     siteUrl: `https://gavdaly.com`,
-    description: `This is my description that will be used in the meta tags and important for search results`,
+    description: `home for my ideas, writing and projects`,
     hero: {
-      heading: `Welcome to Novela, the simplest way to start publishing with Gatsby.`,
+      heading: `home for my ideas, writing and projects`,
       maxWidth: 652,
     },
     social: [
@@ -29,7 +29,7 @@ module.exports = {
   },
   pathPrefix: `/`,
   mapping: {
-    "Mdx.frontmatter.author": `AuthorsYaml`,
+    'Mdx.frontmatter.author': `AuthorsYaml`,
   },
   plugins: [
     `gatsby-plugin-typescript`,
@@ -61,9 +61,8 @@ module.exports = {
           },
           ...rest
         }) => {
-          siteMetadata.feed_url = siteMetadata.siteUrl + "/rss.xml"
-          siteMetadata.image_url =
-            siteMetadata.siteUrl + "/icons/icon-512x512.png"
+          siteMetadata.feed_url = siteMetadata.siteUrl + '/rss.xml'
+          siteMetadata.image_url = siteMetadata.siteUrl + '/icons/icon-512x512.png'
           const siteMetadataModified = siteMetadata
           siteMetadataModified.feed_url = `${siteMetadata.siteUrl}/rss.xml`
           siteMetadataModified.image_url = `${siteMetadata.siteUrl}/icons/icon-512x512.png`
@@ -105,7 +104,7 @@ module.exports = {
                   }
                 }
               }`,
-            output: "/rss.xml",
+            output: '/rss.xml',
           },
         ],
       },
@@ -142,10 +141,10 @@ module.exports = {
           { resolve: `gatsby-remark-numbered-footnotes` },
           { resolve: `gatsby-remark-smartypants` },
           {
-            resolve: "gatsby-remark-external-links",
+            resolve: 'gatsby-remark-external-links',
             options: {
-              target: "_blank",
-              rel: "noreferrer", // eslint-disable-line unicorn/prevent-abbreviations
+              target: '_blank',
+              rel: 'noreferrer', // eslint-disable-line unicorn/prevent-abbreviations
             },
           },
         ],
@@ -161,8 +160,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Novela by Narative`,
-        short_name: `Novela`,
+        name: `GavDaly | ideas, writing and projects`,
+        short_name: `GavDaly`,
         start_url: `/`,
         background_color: `#fff`,
         theme_color: `#fff`,
