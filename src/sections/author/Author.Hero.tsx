@@ -1,12 +1,11 @@
-import React from "react"
-import styled from "@emotion/styled"
+import React from 'react'
+import styled from '@emotion/styled'
 
-import Image from "@components/Image"
+import Image from '@components/Image'
 
-import mediaqueries from "@styles/media"
-import { IAuthor } from "@types"
+import { IAuthor } from '@types'
 
-import SocialLinks from "@components/SocialLinks"
+import SocialLinks from '@components/SocialLinks'
 
 interface AuthorHeroProps {
   author: IAuthor
@@ -50,16 +49,16 @@ const HeroImage = styled.div`
   border: 2px solid var(--color-background);
   box-shadow: 0px 15.619px 31.2381px rgba(0, 0, 0, 0.15);
 
-  ${mediaqueries.tablet`
+  @media (max-width: 44em) {
     width: 146px;
     height: 146px;
-  `}
+  }
 
-  ${mediaqueries.phablet`
+  @media (max-width: 44em) {
     width: 136px;
     height: 136px;
     margin-bottom: 25px;
-  `}
+  }
 `
 
 const Heading = styled.h1`
@@ -67,12 +66,6 @@ const Heading = styled.h1`
   color: var(--color-primary);
   margin-bottom: 15px;
   font-weight: 600;
-
-  ${mediaqueries.tablet`
-  `}
-
-  ${mediaqueries.phablet`
-  `}
 `
 
 const Subheading = styled.p`
@@ -82,18 +75,10 @@ const Subheading = styled.p`
   font-size: 18px;
   line-height: 1.4;
   text-align: center;
-
-  ${mediaqueries.phablet`
-    font-size: 14px;
-  `}
 `
 
 const Social = styled.div`
   display: flex;
   align-items: center;
   margin-top: 35px;
-
-  ${mediaqueries.phablet`
-    font-size: 14px;
-  `}
 `

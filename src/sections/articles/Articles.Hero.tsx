@@ -4,7 +4,6 @@ import styled from '@emotion/styled'
 
 import Bio from '@components/Bio'
 import Icons from '@icons'
-import mediaqueries from '@styles/media'
 import { IAuthor } from '@types'
 
 import { GridLayoutContext } from './Articles.List.Context'
@@ -79,60 +78,27 @@ const SubheadingContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 100px;
-
-  ${mediaqueries.desktop`
-    margin-bottom: 80px;
-  `};
-
-  ${mediaqueries.tablet`
-    margin-bottom: 60px;
-  `};
-
-  ${mediaqueries.phablet`
-    display: none;
-  `};
 `
 
 const GridControlsContainer = styled.div`
   display: flex;
   align-items: center;
-
-  ${mediaqueries.tablet`
-    display: none;
-  `};
 `
 
 const HeadingContainer = styled.div`
   margin: 100px 0;
-
-  ${mediaqueries.desktop`
-    width: 80%;
-  `}
-
-  ${mediaqueries.tablet`
-    width: 100%;
-  `}
 `
 
 const HeroHeading = styled.h1`
   font-style: normal;
   font-weight: 600;
-  font-size: 52px;
+  font-size: 3rem;
   line-height: 1.15;
   color: var(--color-primary);
 
   a {
     color: var(--color-accent);
   }
-
-  ${mediaqueries.desktop`
-    font-size: 38px
-  `}
-
-  ${mediaqueries.phablet`
-    font-size: 32px;
-  `}
 `
 
 const GridButton = styled.button<{ active: boolean }>`

@@ -5,7 +5,6 @@ import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live'
 import theme from 'prism-react-renderer/themes/oceanicNext'
 
 import Icons from '@icons'
-import mediaqueries from '@styles/media'
 
 interface CopyProps {
   toCopy: string
@@ -137,7 +136,7 @@ const CopyButton = styled.button`
     background: rgba(255, 255, 255, 0.07);
   }
 
-  &[data-a11y='true']:focus::after {
+  &:focus::after {
     content: '';
     position: absolute;
     left: -2%;
@@ -146,51 +145,15 @@ const CopyButton = styled.button`
     height: 104%;
     border: 2px solid var(--color-accent);
     border-radius: 5px;
-    background: rgba(255, 255, 255, 0.01);
   }
-
-  ${mediaqueries.tablet`
-    display: none;
-  `}
 `
 
 const Container = styled.div`
   overflow: scroll;
-  width: 100%;
-  max-width: 750px;
-  margin: 0 auto;
-  font-size: 13px;
-  margin: 15px auto 50px;
   border-radius: 5px;
 
   textarea,
   pre {
     padding: 32px !important;
   }
-
-  ${mediaqueries.desktop`
-      left: -26px;
-    `};
-
-  ${mediaqueries.tablet`
-    max-width: 526px;
-    left: 0;
-
-    textarea,
-    pre {
-      padding: 20px !important;
-    }
-  `};
-
-  ${mediaqueries.phablet`
-    border-radius: 0;
-    margin: 0 auto 25px;
-    overflow: initial;
-    width: unset;
-    max-width: unset;
-    float: left;
-    min-width: 100%;
-    overflow: initial;
-    position: relative;
-  `};
 `

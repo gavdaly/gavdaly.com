@@ -3,7 +3,7 @@ import { Global } from '@emotion/core'
 import styled from '@emotion/styled'
 import { useColorMode } from 'theme-ui'
 
-import NavigationFooter from '@components/Navigation/Navigation.Footer'
+import Footer from '@components/Footer'
 import { Navigation } from '@components/Navigation'
 import { LogoLink } from '@components/LogoLink'
 import { PageControls } from '@components/PageControls'
@@ -34,7 +34,7 @@ export const Layout: React.FC<{}> = ({ children }) => {
         <PageControls />
         <Navigation />
         <main id="main">{children}</main>
-        <NavigationFooter id="footer" />
+        <Footer />
       </Container>
     </ArticlesContextProvider>
   )
@@ -52,6 +52,7 @@ const Container = styled.div`
     'main main main'
     'footer footer footer';
   grid-template-rows: auto 1fr auto;
+  grid-template-columns: auto 1fr auto;
   padding: 1rem;
   #logo {
     grid-area: logo;
@@ -67,14 +68,14 @@ const Container = styled.div`
   }
   @media (min-width: 44rem) {
     grid-template-areas:
-      'logo controls'
-      'navigation navigation'
-      'main main'
-      'footer footer';
+      'logo       .          .          controls'
+      'navigation navigation navigation navigation'
+      'main       main       main       main'
+      'footer     footer     footer     footer';
     grid-template-rows: auto auto 1fr auto;
+    grid-template-columns: auto 1fr 1fr auto;
     #navigation {
       grid-area: navigation;
     }
-    background-color: yellow;
   }
 `

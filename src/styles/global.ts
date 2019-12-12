@@ -126,7 +126,6 @@ export const globalStyles = css`
   body {
     font-family: 'FF Meta VF', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
       'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: 1.6rem;
     margin: 0;
     font-weight: 400;
     height: 100%;

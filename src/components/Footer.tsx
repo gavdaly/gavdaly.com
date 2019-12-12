@@ -2,10 +2,7 @@ import React from 'react'
 import styled from '@emotion/styled'
 import { graphql, useStaticQuery } from 'gatsby'
 
-import Section from '@components/Section'
 import SocialLinks from '@components/SocialLinks'
-
-import mediaqueries from '@styles/media'
 
 const siteQuery = graphql`
   {
@@ -45,10 +42,10 @@ const Footer: React.FC<{}> = () => {
   })()
 
   return (
-    <FooterContainer>
-      <FooterText>
+    <FooterContainer id="footer">
+      <div style={{ fontSize: '0.6rem' }}>
         © {copyrightDate} {name}
-      </FooterText>
+      </div>
       <div>
         <SocialLinks links={social} />
       </div>
@@ -58,30 +55,15 @@ const Footer: React.FC<{}> = () => {
 
 export default Footer
 
-const FooterContainer = styled.div`
-  position: relative;
+const FooterContainer = styled.footer`
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding-bottom: 80px;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: baseline;
   color: var(--color-primary);
-
-  ${mediaqueries.tablet`
-    flex-direction: column;
-    padding-bottom: 100px;
-  `}
-
-  ${mediaqueries.phablet`
-    padding-bottom: 50px;
-  `}
-`
-
-const FooterText = styled.div`
-  ${mediaqueries.tablet`
-    margin-bottom: 80px;
-  `}
-
-  ${mediaqueries.phablet`
-    margin: 120px auto 100px;
-  `}
+  @media (min-width: 44rem) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 `

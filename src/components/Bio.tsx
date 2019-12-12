@@ -1,36 +1,29 @@
-import React from 'react';
-import { Link } from 'gatsby';
-import styled from '@emotion/styled';
+import React from 'react'
+import { Link } from 'gatsby'
+import styled from '@emotion/styled'
 
-import Image from '@components/Image';
-import { IAuthor } from '@types';
+import Image from '@components/Image'
+import { IAuthor } from '@types'
 
 const Bio: React.FC<IAuthor> = ({ author }) => {
   return (
     <BioContainer>
-      <BioAvatar
-        as={author.authorsPage ? Link : 'div'}
-        to={author.slug}
-        data-a11y="false"
-        aria-label="Author's bio"
-      >
+      <BioAvatar as={author.authorsPage ? Link : 'div'} to={author.slug} data-a11y="false" aria-label="Author's bio">
         <BioAvatarInner>
           <Image src={author.avatar.medium} />
         </BioAvatarInner>
       </BioAvatar>
       <BioText dangerouslySetInnerHTML={{ __html: author.bio }} />
     </BioContainer>
-  );
-};
+  )
+}
 
-export default Bio;
+export default Bio
 
 const BioContainer = styled.div`
   display: flex;
   align-items: center;
-  position: relative;
-  left: -10px;
-`;
+`
 
 const BioAvatar = styled.div`
   display: block;
@@ -62,25 +55,21 @@ const BioAvatar = styled.div`
     height: 50px;
     border: 2px solid var(--color-accent);
   }
-`;
+`
 
 const BioAvatarInner = styled.div`
   height: 40px;
   width: 40px;
   border-radius: 50%;
   background: rgba(0, 0, 0, 0.25);
-  margin-right: 16px;
   overflow: hidden;
-`;
+`
 
 const BioText = styled.p`
-  max-width: 430px;
-  font-size: 14px;
-  line-height: 1.45;
   color: var(--color-grey);
 
   a {
     color: var(--color-grey);
     text-decoration: underline;
   }
-`;
+`

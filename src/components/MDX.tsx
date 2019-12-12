@@ -17,7 +17,6 @@ import Tables from '@components/Tables'
 import { ImageZoom } from '@components/Image'
 import Figcaption from '@components/Figcaption'
 
-import mediaqueries from '@styles/media'
 import { toKebabCase } from '@utils'
 
 const components = {
@@ -60,29 +59,6 @@ const MDX: React.FC<MDXProps> = ({ content, children, ...props }) => {
 
 export default MDX
 
-const IMAGE_WIDTHS = {
-  regular: '680px',
-  large: '1004px',
-  full: '100vw',
-}
-
-const ARTICLE_WIDTH = css`
-  width: 100%;
-  max-width: 680px;
-
-  ${mediaqueries.desktop`
-    max-width: 507px;
-  `}
-
-  ${mediaqueries.tablet`
-    max-width: 486px;
-  `};
-
-  ${mediaqueries.phablet`
-    padding: 0 20px;
-  `};
-`
-
 const HeadingsCSS = css`
   h1,
   h2,
@@ -98,24 +74,11 @@ const HeadingsCSS = css`
   h2,
   h2 * {
     margin: 25px auto 18px;
-
-    ${mediaqueries.tablet`
-      margin: 30px auto 18px;
-    `};
   }
 
   h3,
   h3 * {
     margin: 20px auto 10px;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    ${ARTICLE_WIDTH};
   }
 `
 
@@ -123,12 +86,11 @@ const PrismCSS = p => css`
   .prism-code {
     overflow: auto;
     width: 100%;
-    max-width: 744px;
     margin: 0 auto;
-    padding: 32px;
-    font-size: 13px;
-    margin: 15px auto 50px;
-    border-radius: 5px;
+    padding: 2rem;
+
+    margin: 1rem auto 3rem;
+    border-radius: 0.3rem;
     background: ${p.theme.colors.prism.background};
 
     .token-line {
@@ -150,11 +112,6 @@ const PrismCSS = p => css`
       user-select: none;
       opacity: 0.3;
       color: #dcd9e6;
-
-      ${mediaqueries.tablet`
-        opacity: 0;
-        width: 0;
-      `};
     }
 
     .token-line.highlight-line {
@@ -162,11 +119,6 @@ const PrismCSS = p => css`
       padding: 0 32px;
       background: ${p.theme.colors.prism.highlight};
       border-left: 3px solid ${p.theme.colors.prism.highlightBorder};
-
-      ${mediaqueries.tablet`
-        margin: 0 -20px;
-        padding: 0 20px;
-      `};
     }
 
     .operator + .maybe-class-name {
@@ -176,30 +128,6 @@ const PrismCSS = p => css`
     .plain ~ .operator {
       color: #5fa8aa !important;
     }
-
-    ${mediaqueries.desktop`
-      left: -26px;
-    `};
-
-    ${mediaqueries.tablet`
-      max-width: 526px;
-      padding: 20px 20px;
-      left: 0;
-    `};
-
-    ${mediaqueries.phablet`
-      text-size-adjust: none;
-      border-radius: 0;
-      margin: 0 auto 25px;
-      padding: 25px 20px;
-      overflow: initial;
-      width: unset;
-      max-width: unset;
-      float: left;
-      min-width: 100%;
-      overflow: initial;
-      position: relative;
-    `};
   }
 `
 
@@ -216,39 +144,16 @@ const ImageCSS = css`
     z-index: 0;
     margin: 15px auto 50px;
     border-radius: 5px;
-
-    ${mediaqueries.tablet`
-      margin: 10px auto 45px;
-    `};
   }
 
   div.Image__Small {
-    display: inline-block;
-    position: relative;
     max-width: 100%;
     height: auto;
     z-index: 0;
-    margin: 15px auto 50px;
+
     border-radius: 5px;
     width: 100%;
     max-width: 680px;
-
-    ${mediaqueries.tablet`
-      margin: 10px auto 45px;
-    `};
-
-    ${mediaqueries.desktop`
-      max-width: 507px;
-    `}
-
-    ${mediaqueries.tablet`
-      max-width: 486px;
-      margin: 0 auto 25px;
-    `};
-
-    ${mediaqueries.phablet`
-      padding: 0 20px;
-    `};
   }
 
   .Image__Container {
@@ -260,49 +165,15 @@ const ImageCSS = css`
   }
 
   div.Image__Medium {
-    position: relative;
-    margin: 15px auto 50px;
     width: 100%;
-    max-width: ${IMAGE_WIDTHS.large};
-
-    ${mediaqueries.desktop_medium`
-      left: -34px;
-    `};
-
-    ${mediaqueries.desktop`
-      left: -26px;
-    `};
-
-    ${mediaqueries.tablet`
-      border-radius: 0;
-      left: 0;
-      margin: 0 auto 25px;
-
-      img {
-        border-radius: 0;
-      }
-    `};
   }
 
   div.Image__Large {
-    position: relative;
-    left: -68px;
-    width: ${IMAGE_WIDTHS.full};
-    margin: 25px auto 60px;
     pointer-events: none;
 
     img {
       border-radius: 0;
     }
-
-    ${mediaqueries.desktop`
-      left: -53px;
-    `};
-
-    ${mediaqueries.tablet`
-      left: 0;
-      margin: 0 auto 25px;
-    `};
   }
 `
 

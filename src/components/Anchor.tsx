@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled'
 
 const Anchor = styled.a`
   transition: background 0.25s var(--ease-in-out-quad), color 0.25s var(--ease-in-out-quad);
@@ -13,6 +13,6 @@ const Anchor = styled.a`
   &:focus {
     text-decoration: underline;
   }
-`;
+`
 
-export default Anchor;
+export default Anchor

@@ -5,7 +5,6 @@ import { Link } from 'gatsby'
 
 import Image from '@components/Image'
 import Icons from '@icons'
-import mediaqueries from '@styles/media'
 import { IAuthor } from '@types'
 
 /**
@@ -109,9 +108,9 @@ const AuthorAvatar = styled.div`
     padding-bottom: 100% !important;
   }
 
-  ${mediaqueries.phablet`
+  @media (max-width: 44em) {
     display: none;
-  `}
+  }
 `
 
 const AuthorLink = styled.div`
@@ -133,9 +132,9 @@ const CoAuthorsList = styled.div`
   height: 25px;
   margin-right: 15px;
 
-  ${mediaqueries.phablet`
+  @media (max-width: 44em) {
     display: none;
-  `}
+  }
 `
 
 const CoAuthorsListOpen = styled.ul`
@@ -195,27 +194,18 @@ const CoAuthorAvatar = styled.div`
     overflow: hidden;
   }
 
-  ${mediaqueries.phablet`
+  @media (max-width: 44em) {
     display: none;
-  `}
+  }
 `
 
 const NameContainer = styled.strong`
   position: relative;
-  max-width: 260px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   font-weight: 600;
   cursor: pointer;
-
-  ${mediaqueries.desktop`
-    max-width: 120px;
-  `}
-
-  ${mediaqueries.phablet`
-    max-width: 200px;
-  `}
 `
 
 const AuthorNameOpen = styled.strong`
@@ -230,13 +220,13 @@ const IconContainer = styled.div`
   cursor: pointer;
   margin-left: 10px;
 
-  ${mediaqueries.phablet`
+  @media (max-width: 44em) {
     position: absolute;
     right: 0;
     bottom: 0;
     top: 10px;
     height: 100%;
-  `}
+  }
 `
 
 const IconOpenContainer = styled.div`
@@ -274,7 +264,7 @@ const CoAuthorsContainer = styled.div<{ isOpen: boolean }>`
     opacity: 1;
   }
 
-  ${mediaqueries.phablet`
+  @media (max-width: 44em) {
     font-size: 14px;
     align-items: center;
 
@@ -284,17 +274,16 @@ const CoAuthorsContainer = styled.div<{ isOpen: boolean }>`
       background: transparent;
     }
 
-
     strong {
       display: block;
       font-weight: semi-bold;
       margin-bottom: 5px;
     }
-  `}
+  }
 `
 
 const HideOnMobile = styled.span`
-  ${mediaqueries.phablet`
+  @media (max-width: 44em) {
     display: none;
-  `}
+  }
 `

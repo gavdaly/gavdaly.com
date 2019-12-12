@@ -1,13 +1,12 @@
-import React from "react";
-import styled from "@emotion/styled";
+import React from 'react'
+import styled from '@emotion/styled'
 
-import mediaqueries from "@styles/media";
-import { IArticle } from "@types";
+import { IArticle } from '@types'
 
-import ArticlesList from "../articles/Articles.List";
+import ArticlesList from '../articles/Articles.List'
 
 interface AuthorArticlesProps {
-  articles: IArticle[];
+  articles: IArticle[]
 }
 
 const AuthorArticles: React.FC<AuthorArticlesProps> = ({ articles }) => {
@@ -15,10 +14,10 @@ const AuthorArticles: React.FC<AuthorArticlesProps> = ({ articles }) => {
     <AuthorArticlesContainer>
       <ArticlesList articles={articles} alwaysShowAllDetails />
     </AuthorArticlesContainer>
-  );
-};
+  )
+}
 
-export default AuthorArticles;
+export default AuthorArticles
 
 const AuthorArticlesContainer = styled.div`
   background: linear-gradient(180deg, var(--color-card) 0%, rgba(249, 250, 252, 0) 91.01%);
@@ -26,13 +25,4 @@ const AuthorArticlesContainer = styled.div`
   padding: 88px 98px;
   position: relative;
   z-index: 1;
-
-  ${mediaqueries.desktop_medium`
-    padding: 80px;
-  `}
-
-  ${mediaqueries.desktop`
-    padding: 0;
-    background: transparent;
-  `}
-`;
+`

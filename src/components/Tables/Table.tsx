@@ -1,40 +1,23 @@
-import React from "react";
-import styled from "@emotion/styled";
-import mediaqueries from "@styles/media";
+import React from 'react'
+import styled from '@emotion/styled'
 
 const StyledTable = styled.table`
-  position: relative;
   line-height: 1.65;
   color: var(--color-grey);
-  transition: background 0.25s var(--ease-in-out-quad), color 0.25s var(--ease-in-out-quad);
   background: var(--color-card);
   margin: 45px auto 85px;
-  width: 100%;
-  max-width: 1004px;
   border: 1px solid var(--color-horizontalRule);
   border-radius: 5px;
   overflow: hidden;
   border-collapse: separate;
-
-  ${mediaqueries.desktop`
-    margin: 25px auto 65px;
-  `}
-
-  ${mediaqueries.tablet`
-    max-width: 486px;
-  `};
-
-  ${mediaqueries.phablet`
-    margin: 15px auto 55px;
-  `};
-`;
+`
 
 const Table: React.FC<{}> = ({ children }) => {
   return (
-    <div style={{ overflowX: "auto", padding: "0 20px" }}>
+    <div style={{ overflowX: 'auto', padding: '0 20px' }}>
       <StyledTable>{children}</StyledTable>
     </div>
-  );
-};
+  )
+}
 
-export default Table;
+export default Table

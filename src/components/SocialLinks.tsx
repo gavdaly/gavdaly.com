@@ -1,15 +1,14 @@
-import React from 'react';
-import styled from '@emotion/styled';
+import React from 'react'
+import styled from '@emotion/styled'
 
-import Icons from '@icons';
-import mediaqueries from '@styles/media';
+import Icons from '@icons'
 
 interface SocialLinksProps {
   links: {
-    name: string;
-    url: string;
-  }[];
-  fill: string;
+    name: string
+    url: string
+  }[]
+  fill: string
 }
 
 const icons = {
@@ -27,27 +26,22 @@ const icons = {
   patreon: Icons.Patreon,
   paypal: Icons.Paypal,
   digitalocean: Icons.DigitalOcean,
-};
+}
 
 const getHostname = url => {
-  return new URL(url.toLowerCase()).hostname.replace('www.', '').split('.')[0];
-};
+  return new URL(url.toLowerCase()).hostname.replace('www.', '').split('.')[0]
+}
 
-const SocialLinks: React.FC<SocialLinksProps> = ({
-  links,
-  fill = '#73737D'
-}) => {
-  if (!links) return null;
+const SocialLinks: React.FC<SocialLinksProps> = ({ links, fill = '#73737D' }) => {
+  if (!links) return null
 
   return (
     <>
       {links.map(option => {
-        const name = option.name || getHostname(option.url);
-        const Icon = icons[name];
+        const name = option.name || getHostname(option.url)
+        const Icon = icons[name]
         if (!Icon) {
-          throw new Error(
-            `unsupported social link name=${name} / url=${option.url}`,
-          );
+          throw new Error(`unsupported social link name=${name} / url=${option.url}`)
         }
         return (
           <SocialIconContainer
@@ -61,28 +55,28 @@ const SocialLinks: React.FC<SocialLinksProps> = ({
             <Icon fill={fill} />
             <Hidden>Link to ${option.url}</Hidden>
           </SocialIconContainer>
-        );
+        )
       })}
     </>
-  );
-};
+  )
+}
 
-export default SocialLinks;
+export default SocialLinks
 
 const SocialIconContainer = styled.a`
   position: relative;
   margin-left: 3.2rem;
   text-decoration: none;
   max-width: 16px;
+  svg {
+    fill: var(--color-primary);
+    transition: fill, scale 0.25s var(--ease-in-out-quad);
 
-  &:hover {
-    svg {
-      &:hover * {
-        fill: var(--color-primary);
-      }
-      * {
-        transition: fill 0.25s var(--ease-in-out-quad);
-      }
+    &:hover * {
+      fill: var(--color-accent);
+      transform: scale(1.1);
+    }
+    * {
     }
   }
 
@@ -94,7 +88,7 @@ const SocialIconContainer = styled.a`
     margin-right: 0;
   }
 
-  &[data-a11y='true']:focus::after {
+  &:focus::after {
     content: '';
     position: absolute;
     left: -50%;
@@ -105,11 +99,7 @@ const SocialIconContainer = styled.a`
     background: rgba(255, 255, 255, 0.01);
     border-radius: 5px;
   }
-
-  ${mediaqueries.tablet`
-    margin: 0 2.2rem;
-  `};
-`;
+`
 
 const Hidden = styled.span`
   width: 0px;
@@ -118,4 +108,4 @@ const Hidden = styled.span`
   opacity: 0;
   overflow: hidden;
   display: inline-block;
-`;
+`

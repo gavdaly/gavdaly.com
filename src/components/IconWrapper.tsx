@@ -1,5 +1,4 @@
 import styled from '@emotion/styled'
-import mediaqueries from '@styles/media'
 
 export const IconWrapper = styled.button`
   opacity: 0.5;
@@ -28,15 +27,4 @@ export const IconWrapper = styled.button`
     background: rgba(255, 255, 255, 0.01);
     border-radius: 5px;
   }
-
-  ${mediaqueries.tablet`
-    display: inline-flex;
-    transform: scale(0.708);
-    margin-left: 10px;
-
-
-    &:hover {
-      opacity: 0.5;
-    }
-  `}
 `
