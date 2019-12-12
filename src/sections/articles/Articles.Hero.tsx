@@ -2,9 +2,9 @@ import React, { useContext } from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 import styled from '@emotion/styled'
 
-import Bio from '@components/Bio'
-import Icons from '@icons'
-import { IAuthor } from '@types'
+import Bio from '../../components/Bio'
+import Icons from '../../icons'
+import { IAuthor } from '../../types'
 
 import { GridLayoutContext } from './Articles.List.Context'
 

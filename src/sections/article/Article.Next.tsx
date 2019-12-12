@@ -3,10 +3,10 @@ import styled from '@emotion/styled'
 import { css } from '@emotion/core'
 import { Link } from 'gatsby'
 
-import Headings from '@components/Headings'
-import Image from '@components/Image'
+import Headings from '../../components/Headings'
+import Image from '../../components/Image'
 
-import { IArticle } from '@types'
+import { IArticle } from '../../types'
 
 interface ArticlesNextProps {
   articles: IArticle[]
@@ -42,22 +42,19 @@ interface GridItemProps {
   narrow?: boolean
 }
 
-const GridItem: React.FC<GridItemProps> = ({ article, narrow }) => {
+const GridItem: React.FC<GridItemProps> = ({ article }) => {
   if (!article) return null
 
-  const hasOverflow = narrow && article.title.length > 35
-  const imageSource = narrow ? article.hero.narrow : article.hero.regular
+  const imageSource = article.hero.regular
 
   return (
-    <ArticleLink to={article.slug} data-a11y="false" narrow={narrow ? 'true' : 'false'}>
+    <ArticleLink to={article.slug} data-a11y="false">
       <Item>
         <ImageContainer>
           <Image src={imageSource} />
         </ImageContainer>
-        <Title dark hasOverflow={hasOverflow}>
-          {article.title}
-        </Title>
-        <Excerpt hasOverflow={hasOverflow}>{article.excerpt}</Excerpt>
+        <Title>{article.title}</Title>
+        <Excerpt>{article.excerpt}</Excerpt>
         <MetaData>
           {article.date} · {article.timeToRead} min read
         </MetaData>{' '}
@@ -102,8 +99,7 @@ const Grid = styled.div<{ numberOfArticles: number }>`
 const ImageContainer = styled.div`
   position: relative;
   height: 280px;
-  box-shadow: 0 30px 60px -10px rgba(0, 0, 0, ${p => (p.narrow ? 0.22 : 0.3)}),
-    0 18px 36px -18px rgba(0, 0, 0, ${p => (p.narrow ? 0.25 : 0.33)});
+  box-shadow: 0 30px 60px -10px rgba(0, 0, 0, 0.22), 0 18px 36px -18px rgba(0, 0, 0, 0.25);
   margin-bottom: 30px;
   transition: transform 0.3s var(--ease-out-quad), box-shadow 0.3s var(--ease-out-quad);
 
@@ -126,19 +122,17 @@ const Item = styled.div`
 const Title = styled(Headings.h3)`
   font-size: 22px;
   line-height: 1.4;
-  margin-bottom: ${p => (p.hasOverflow ? '45px' : '10px')};
+  margin-bottom: 1rem;
   color: var(--color-primary);
   transition: color 0.3s ease-in-out;
   ${limitToTwoLines};
 `
 
-const Excerpt = styled.p<{ narrow: boolean; hasOverflow: boolean }>`
+const Excerpt = styled.p`
   ${limitToTwoLines};
   font-size: 16px;
   margin-bottom: 10px;
   color: var(--color-grey);
-  display: ${p => (p.hasOverflow ? 'none' : 'box')};
-  max-width: ${p => (p.narrow ? '415px' : '515px')};
 `
 
 const MetaData = styled.div`
@@ -148,7 +142,7 @@ const MetaData = styled.div`
   opacity: 0.33;
 `
 
-const ArticleLink = styled(Link)<{ narrow: string }>`
+const ArticleLink = styled(Link)`
   position: relative;
   display: block;
   width: 100%;

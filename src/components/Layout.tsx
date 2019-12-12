@@ -3,14 +3,14 @@ import { Global } from '@emotion/core'
 import styled from '@emotion/styled'
 import { useColorMode } from 'theme-ui'
 
-import Footer from '@components/Footer'
-import { Navigation } from '@components/Navigation'
-import { LogoLink } from '@components/LogoLink'
-import { PageControls } from '@components/PageControls'
+import Footer from '../components/Footer'
+import { Navigation } from '../components/Navigation'
+import { LogoLink } from '../components/LogoLink'
+import { PageControls } from '../components/PageControls'
 
 import ArticlesContextProvider from '../sections/articles/Articles.List.Context'
 
-import { globalStyles } from '@styles'
+import { globalStyles } from '../styles'
 
 /**
  * <Layout /> needs to wrap every page as it provides styles, navigation,
@@ -26,11 +26,9 @@ export const Layout: React.FC<{}> = ({ children }) => {
 
   return (
     <ArticlesContextProvider>
+      <Global styles={globalStyles} />
       <Container id={colorMode}>
-        <Global styles={globalStyles} />
-        <div id="logo">
-          <LogoLink />
-        </div>
+        <LogoLink />
         <PageControls />
         <Navigation />
         <main id="main">{children}</main>
@@ -67,6 +65,7 @@ const Container = styled.div`
     grid-area: footer;
   }
   @media (min-width: 44rem) {
+    padding: 0 10vw;
     grid-template-areas:
       'logo       .          .          controls'
       'navigation navigation navigation navigation'

@@ -4,7 +4,7 @@ import styled from '@emotion/styled'
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live'
 import theme from 'prism-react-renderer/themes/oceanicNext'
 
-import Icons from '@icons'
+import Icons from '../../icons'
 
 interface CopyProps {
   toCopy: string
@@ -29,11 +29,11 @@ const Copy: React.FC<CopyProps> = ({ toCopy }) => {
     <CopyButton onClick={copyToClipboardOnClick} data-a11y="false">
       {hasCopied ? (
         <>
-          Copied <Icons.Copied fill="#6f7177" />
+          Copied <Icons.Copied />
         </>
       ) : (
         <>
-          Copy <Icons.Copy fill="#6f7177" />
+          Copy <Icons.Copy />
         </>
       )}
     </CopyButton>
@@ -42,11 +42,12 @@ const Copy: React.FC<CopyProps> = ({ toCopy }) => {
 
 const RE = /{([\d,-]+)}/
 
-function calculateLinesToHighlight(meta) {
+function calculateLinesToHighlight(meta: string) {
   if (RE.test(meta)) {
+    if (!meta) return
     const lineNumbers = RE.exec(meta)[1]
-      .split(',')
-      .map(v => v.split('-').map(y => parseInt(y, 10)))
+    if (!lineNumbers) return
+    lineNumbers.split(',').map(v => v.split('-').map(y => parseInt(y, 10)))
 
     return index => {
       const lineNumber = index + 1

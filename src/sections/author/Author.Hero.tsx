@@ -1,11 +1,11 @@
 import React from 'react'
 import styled from '@emotion/styled'
 
-import Image from '@components/Image'
+import Image from '../../components/Image'
 
-import { IAuthor } from '@types'
+import { IAuthor } from '../../types'
 
-import SocialLinks from '@components/SocialLinks'
+import SocialLinks from '../../components/SocialLinks'
 
 interface AuthorHeroProps {
   author: IAuthor

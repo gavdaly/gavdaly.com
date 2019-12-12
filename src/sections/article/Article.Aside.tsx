@@ -4,7 +4,7 @@ import throttle from 'lodash/throttle'
 
 import HandleOverlap from './Article.HandleOverlap'
 
-import { clamp } from '@utils'
+import { clamp } from '../../utils'
 
 interface AsideProps {
   contentHeight: number
@@ -36,13 +36,16 @@ const Aside: React.FC<AsideProps> = ({ contentHeight, children }) => {
   const childrenWithProps = React.Children.map(children, child => React.cloneElement(child, { show }))
 
   useEffect(() => {
-    const imageRect = document.getElementById('ArticleImage__Hero').getBoundingClientRect()
+    const el = document.getElementById('ArticleImage__Hero')
+    if (!el) return
+    const imageRect = el.getBoundingClientRect()
 
     const imageOffsetFromTopOfWindow = imageRect.top + window.scrollY
     setImageOffset(imageOffsetFromTopOfWindow)
 
     const handleScroll = throttle(() => {
       const el = progressRef.current
+      if (!el) return
       const top = el.getBoundingClientRect().top
       const height = el.offsetHeight
       const windowHeight = window.innerHeight || document.documentElement.clientHeight
@@ -71,7 +74,7 @@ const Aside: React.FC<AsideProps> = ({ contentHeight, children }) => {
 
   return (
     <AsideContainer>
-      <Align show={show} imageOffset={imageOffset} shouldFixAside={shouldFixAside}>
+      <Align show={!!show} imageOffset={imageOffset} shouldFixAside={shouldFixAside}>
         <div ref={progressRef}>
           <HandleOverlap>{childrenWithProps}</HandleOverlap>
         </div>
@@ -103,6 +106,5 @@ const Align = React.memo(styled.div<{
 
   opacity: ${p => (p.show ? 1 : 0)};
   visibility: ${p => (p.show ? 'visible' : 'hidden')};
-  transition: ${p =>
-    p.show ? 'opacity 0.4s linear, visibility 0.4s linear' : 'opacity 0.2s linear, visibility 0.4s linear'};
+  transition: opacity 0.4s linear, visibility 0.4s linear;
 `)

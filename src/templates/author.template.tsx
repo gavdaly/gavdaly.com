@@ -1,14 +1,14 @@
 import React from 'react'
 import styled from '@emotion/styled'
 
-import SEO from '@components/SEO'
-import Layout from '@components/Layout'
-import Paginator from '@components/Navigation/Navigation.Paginator'
+import SEO from '../components/SEO'
+import Layout from '../components/Layout'
+import Paginator from '../components/Navigation/Navigation.Paginator'
 
 import AuthorHero from '../sections/author/Author.Hero'
 import AuthorArticles from '../sections/author/Author.Articles'
 
-import { Template } from '@types'
+import { Template } from '../types'
 
 const ArticlesPage: Template = ({ location, pageContext }) => {
   const author = pageContext.additionalContext.author

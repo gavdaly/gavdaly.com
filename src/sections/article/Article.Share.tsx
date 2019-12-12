@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react'
 import styled from '@emotion/styled'
 import { keyframes } from '@emotion/core'
 
-import Icons from '@icons'
+import Icons from '../../icons'
 
-import { getHighlightedTextPositioning, getSelectionDimensions, getSelectionText } from '@utils'
+import { getHighlightedTextPositioning, getSelectionDimensions, getSelectionText } from '../../utils'
 
 interface MenuFloatState {
   x: number

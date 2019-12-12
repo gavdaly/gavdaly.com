@@ -3,10 +3,10 @@ import styled from '@emotion/styled'
 import { css } from '@emotion/core'
 import { Link } from 'gatsby'
 
-import Headings from '@components/Headings'
-import Image, { ImagePlaceholder } from '@components/Image'
+import Headings from '../../components/Headings'
+import Image, { ImagePlaceholder } from '../../components/Image'
 
-import { IArticle } from '@types'
+import { IArticle } from '../../types'
 
 import { GridLayoutContext } from './Articles.List.Context'
 

@@ -1,8 +1,7 @@
-import addToMailchimp from 'gatsby-plugin-mailchimp'
 import React, { useState } from 'react'
 import styled from '@emotion/styled'
 
-import Headings from '@components/Headings'
+import Headings from '../components/Headings'
 
 const Subscription: React.FC<{}> = () => {
   const [email, setEmail] = useState('')
@@ -12,22 +11,7 @@ const Subscription: React.FC<{}> = () => {
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
 
-    addToMailchimp(email)
-      .then(data => {
-        if (data.result === 'error') {
-          throw data
-        }
-
-        setSubscribed(true)
-        setEmail('')
-
-        setTimeout(() => {
-          setSubscribed(false)
-        }, 6000)
-      })
-      .catch(error => {
-        setError(error.msg)
-      })
+    // subscribe to newsletter
   }
 
   function handleEmailChange(event: React.ChangeEvent<HTMLInputElement>) {

@@ -2,7 +2,7 @@ import React from 'react'
 import styled from '@emotion/styled'
 import { graphql, useStaticQuery } from 'gatsby'
 
-import SocialLinks from '@components/SocialLinks'
+import SocialLinks from '../components/SocialLinks'
 
 const siteQuery = graphql`
   {

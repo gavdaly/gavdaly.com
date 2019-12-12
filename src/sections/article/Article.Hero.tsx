@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from '@emotion/styled'
 
-import Headings from '@components/Headings'
-import Image, { ImagePlaceholder } from '@components/Image'
+import Headings from '../../components/Headings'
+import Image, { ImagePlaceholder } from '../../components/Image'
 
-import { IArticle, IAuthor } from '@types'
+import { IArticle, IAuthor } from '../../types'
 
 import ArticleAuthors from './Article.Authors'
 
@@ -22,9 +22,9 @@ const ArticleHero: React.FC<ArticleHeroProps> = ({ article, authors }) => {
     <>
       <Header>
         <HeroHeading>{article.title}</HeroHeading>
-        <HeroSubtitle hasCoAUthors={hasCoAUthors}>
+        <HeroSubtitle>
           <ArticleAuthors authors={authors} />
-          <ArticleMeta hasCoAUthors={hasCoAUthors}>
+          <ArticleMeta>
             {article.date} · {article.timeToRead} min read
           </ArticleMeta>
         </HeroSubtitle>

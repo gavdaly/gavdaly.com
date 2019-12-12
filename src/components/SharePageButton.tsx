@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Icons from '../icons'
 
-import { IconWrapper } from '@components/IconWrapper'
+import { IconWrapper } from '../components/IconWrapper'
 import { ToolTip } from './ToolTip'
 
 enum copyState {

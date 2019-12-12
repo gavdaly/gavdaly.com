@@ -2,13 +2,18 @@ import React from 'react'
 import { Link } from 'gatsby'
 import styled from '@emotion/styled'
 
-import Image from '@components/Image'
-import { IAuthor } from '@types'
+import Image from '../components/Image'
+import { IAuthor } from '../types'
 
-const Bio: React.FC<IAuthor> = ({ author }) => {
+interface IProps {
+  author: IAuthor
+}
+
+const Bio: React.FC<IProps> = ({ author }) => {
+  console.log('AUTHOR: ', author)
   return (
     <BioContainer>
-      <BioAvatar as={author.authorsPage ? Link : 'div'} to={author.slug} data-a11y="false" aria-label="Author's bio">
+      <BioAvatar to={author.slug} data-a11y="false" aria-label="Author's bio">
         <BioAvatarInner>
           <Image src={author.avatar.medium} />
         </BioAvatarInner>
@@ -25,7 +30,7 @@ const BioContainer = styled.div`
   align-items: center;
 `
 
-const BioAvatar = styled.div`
+const BioAvatar = styled(Link)`
   display: block;
   position: relative;
   height: 40px;

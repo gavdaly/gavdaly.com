@@ -1,60 +1,49 @@
 import React from 'react'
-import styled from "@emotion/styled"
-import { useColorMode } from "theme-ui"
+import styled from '@emotion/styled'
+import { useColorMode } from 'theme-ui'
 
 import { IconWrapper } from './IconWrapper'
 
-export const DarkModeToggle: React.FC<{}> = () => {
-    const [colorMode, setColorMode] = useColorMode()
-    const isDark = colorMode === `dark`
+export const DarkModeToggle: React.FC = () => {
+  const [colorMode, setColorMode] = useColorMode()
+  const isDark = colorMode === `dark`
 
-    function toggleColorMode(event) {
-        event.preventDefault()
-        setColorMode(isDark ? `light` : `dark`)
-    }
+  function toggleColorMode(event: React.SyntheticEvent) {
+    event.preventDefault()
+    setColorMode(isDark ? `light` : `dark`)
+  }
 
-    return (
-        <IconWrapper
-            isDark={isDark}
-            onClick={toggleColorMode}
-            data-a11y="false"
-            aria-label={isDark ? "Activate light mode" : "Activate dark mode"}
-            title={isDark ? "Activate light mode" : "Activate dark mode"}
-        >
-            <MoonOrSun isDark={isDark} />
-            <MoonMask isDark={isDark} />
-        </IconWrapper>
-    )
+  return (
+    <IconWrapper
+      onClick={toggleColorMode}
+      data-a11y="false"
+      aria-label={isDark ? 'Activate light mode' : 'Activate dark mode'}
+      title={isDark ? 'Activate light mode' : 'Activate dark mode'}
+    >
+      <MoonOrSun className={isDark ? 'dark' : 'light'} />
+      <MoonMask className={isDark ? 'dark' : 'light'} />
+    </IconWrapper>
+  )
 }
 
 // This is based off a codepen! Much appreciated to: https://codepen.io/aaroniker/pen/KGpXZo
-const MoonOrSun = styled.div<{ isDark: boolean }>`
+const MoonOrSun = styled.div`
   position: relative;
   width: 24px;
   height: 24px;
   border-radius: 50%;
   border: 4px solid var(--color-primary);
   background: var(--color-primary);
-  transform: scale(${p => (p.isDark ? 0.55 : 1)});
+  transform: scale(1);
   transition: all 0.45s ease;
-  overflow: ${p => (p.isDark ? "visible" : "hidden")};
-
-  &::before {
-    content: "";
-    position: absolute;
-    right: -9px;
-    top: -9px;
-    height: 24px;
-    width: 24px;
-    border: 2px solid var(--color-primary);
-    border-radius: 50%;
-    transform: translate(${p => (p.isDark ? "14px, -14px" : "0, 0")});
-    opacity: ${p => (p.isDark ? 0 : 1)};
-    transition: transform 0.45s ease;
+  overflow: hidden;
+  &.dark {
+    transform: scale(0.55);
+    overflow: visible;
   }
 
   &::after {
-    content: "";
+    content: '';
     width: 8px;
     height: 8px;
     border-radius: 50%;
@@ -62,20 +51,18 @@ const MoonOrSun = styled.div<{ isDark: boolean }>`
     position: absolute;
     top: 50%;
     left: 50%;
-    box-shadow: 0 -23px 0 var(--color-primary),
-      0 23px 0 var(--color-primary),
-      23px 0 0 var(--color-primary),
-      -23px 0 0 var(--color-primary),
-      15px 15px 0 var(--color-primary),
-      -15px 15px 0 var(--color-primary),
-      15px -15px 0 var(--color-primary),
-      -15px -15px 0 var(--color-primary);
-    transform: scale(${p => (p.isDark ? 1 : 0)});
+    box-shadow: 0 -23px 0 var(--color-primary), 0 23px 0 var(--color-primary), 23px 0 0 var(--color-primary),
+      -23px 0 0 var(--color-primary), 15px 15px 0 var(--color-primary), -15px 15px 0 var(--color-primary),
+      15px -15px 0 var(--color-primary), -15px -15px 0 var(--color-primary);
+    transform: scale(1);
     transition: all 0.35s ease;
+    &.dark {
+      transform: scale(0);
+    }
   }
 `
 
-const MoonMask = styled.div<{ isDark: boolean }>`
+const MoonMask = styled.div`
   position: absolute;
   right: -1px;
   top: -8px;
@@ -84,7 +71,11 @@ const MoonMask = styled.div<{ isDark: boolean }>`
   border-radius: 50%;
   border: 0;
   background: var(--color-background);
-  transform: translate(${p => (p.isDark ? "14px, -14px" : "0, 0")});
-  opacity: ${p => (p.isDark ? 0 : 1)};
+  transform: translate(14px, -14px);
+  opacity: 0;
   transition: background 0.25s var(--ease-in-out-quad), color 0.25s var(--ease-in-out-quad), transform 0.45s ease;
+  &.light {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
 `

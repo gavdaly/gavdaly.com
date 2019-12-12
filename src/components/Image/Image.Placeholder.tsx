@@ -12,15 +12,24 @@ const Container = styled.div`
   font-size: 32px;
   font-weight: 600;
 `
+const initialProps = { width: 0, height: 0 }
 
-const ImagePlaceholder: React.FC<{}> = props => {
+const ImagePlaceholder: React.FC = props => {
   const containerRef = useRef<HTMLDivElement>(null)
-  const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
+  const [dimensions, setDimensions] = useState(initialProps)
 
   useEffect(() => {
+    if (!containerRef) return
+    if (!containerRef.current) return
+
     setDimensions(containerRef.current.getBoundingClientRect())
 
-    const handleResize = () => setDimensions(containerRef.current.getBoundingClientRect())
+    const handleResize = () => {
+      if (!containerRef) return
+      if (!containerRef.current) return
+
+      setDimensions(containerRef.current.getBoundingClientRect())
+    }
 
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)

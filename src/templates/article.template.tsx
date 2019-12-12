@@ -3,19 +3,19 @@ import styled from '@emotion/styled'
 import throttle from 'lodash/throttle'
 import { graphql, useStaticQuery } from 'gatsby'
 
-import Layout from '@components/Layout'
-import MDXRenderer from '@components/MDX'
-import Progress from '@components/Progress'
-import Subscription from '@components/Subscription'
+import Layout from '../components/Layout'
+import MDXRenderer from '../components/MDX'
+import Progress from '../components/Progress'
+import Subscription from '../components/Subscription'
 
-import { debounce, clamp } from '@utils'
+import { debounce, clamp } from '../utils'
 
 import ArticleHero from '../sections/article/Article.Hero'
 import ArticlesNext from '../sections/article/Article.Next'
 import ArticleSEO from '../sections/article/Article.SEO'
 import ArticleShare from '../sections/article/Article.Share'
 
-import { Template } from '@types'
+import { Template } from '../types'
 
 const siteQuery = graphql`
   {
@@ -38,7 +38,6 @@ const useHeightPercent = (ref: RefObject<HTMLElement>): number => {
 
   useEffect(() => {
     const calculateBodySize = throttle(() => {
-
       const contentSection = ref.current
 
       if (!contentSection) return
@@ -105,7 +104,7 @@ const Article: Template = ({ pageContext, location }) => {
     <>
       <ArticleSEO article={article} authors={authors} location={location} />
       <Layout>
-        <ArticleHero id="Hero" article={article} authors={authors} />
+        <ArticleHero article={article} authors={authors} />
         <ArticleBody ref={contentSectionRef}>
           <MDXRenderer content={article.body}>
             <ArticleShare />

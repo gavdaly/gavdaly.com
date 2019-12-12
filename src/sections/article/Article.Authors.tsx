@@ -3,9 +3,9 @@ import styled from '@emotion/styled'
 import OutsideClickHandler from 'react-outside-click-handler'
 import { Link } from 'gatsby'
 
-import Image from '@components/Image'
-import Icons from '@icons'
-import { IAuthor } from '@types'
+import Image from '../../components/Image'
+import Icons from '../../icons'
+import { IAuthor } from '../../types'
 
 /**
  * When generating the author names we're also checking to see how long the
