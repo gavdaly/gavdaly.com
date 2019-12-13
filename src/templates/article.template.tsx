@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect, RefObject } from 'react'
 import styled from '@emotion/styled'
-import throttle from 'lodash/throttle'
+import { throttle } from 'lodash'
 import { graphql, useStaticQuery } from 'gatsby'
 
 import Layout from '../components/Layout'
@@ -98,7 +98,7 @@ const Article: Template = ({ pageContext, location }) => {
   const results = useStaticQuery(siteQuery)
   const name = results.allSite.edges[0].node.siteMetadata.name
 
-  const { article, authors, mailchimp, next } = pageContext
+  const { article, authors, next } = pageContext
 
   return (
     <>
@@ -110,7 +110,7 @@ const Article: Template = ({ pageContext, location }) => {
             <ArticleShare />
           </MDXRenderer>
         </ArticleBody>
-        {mailchimp && article.subscription && <Subscription />}
+        <Subscription />
         {next.length > 0 && (
           <NextArticle>
             <FooterNext>More articles from {name}</FooterNext>
