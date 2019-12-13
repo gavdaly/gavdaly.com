@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Global } from '@emotion/core'
 import styled from '@emotion/styled'
-import { useColorMode } from 'theme-ui'
 
 import Footer from '../components/Footer'
 import { Navigation } from '../components/Navigation'
@@ -18,7 +17,11 @@ import { globalStyles } from '../styles'
  * which hides a lot of the mess we need to create our Desktop and Mobile experiences.
  */
 export const Layout: React.FC<{}> = ({ children }) => {
-  const [colorMode] = useColorMode()
+  const [colorMode, setColorMode] = useState(`light`)
+
+  function toggleColorMode() {
+    setColorMode(colorMode === 'dark' ? 'light' : 'dark')
+  }
 
   useEffect(() => {
     parent.postMessage({ theme: colorMode }, '*')
@@ -29,7 +32,7 @@ export const Layout: React.FC<{}> = ({ children }) => {
       <Global styles={globalStyles} />
       <Container id={colorMode}>
         <LogoLink />
-        <PageControls />
+        <PageControls toggleColorMode={toggleColorMode} colorMode={colorMode} />
         <Navigation />
         <main id="main">{children}</main>
         <Footer />

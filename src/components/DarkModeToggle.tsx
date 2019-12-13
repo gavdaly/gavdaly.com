@@ -1,22 +1,24 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import { useColorMode } from 'theme-ui'
 
 import { IconWrapper } from './IconWrapper'
 
-export const DarkModeToggle: React.FC = () => {
-  const [colorMode, setColorMode] = useColorMode()
+interface IProps {
+  toggleColorMode: () => void
+  colorMode: 'dark' | 'light'
+}
+
+export const DarkModeToggle: React.FC<IProps> = ({ toggleColorMode, colorMode }) => {
   const isDark = colorMode === `dark`
 
-  function toggleColorMode(event: React.SyntheticEvent) {
+  function _toggleColorMode(event: React.SyntheticEvent) {
     event.preventDefault()
-    setColorMode(isDark ? `light` : `dark`)
+    toggleColorMode()
   }
 
   return (
     <IconWrapper
-      onClick={toggleColorMode}
-      data-a11y="false"
+      onClick={_toggleColorMode}
       aria-label={isDark ? 'Activate light mode' : 'Activate dark mode'}
       title={isDark ? 'Activate light mode' : 'Activate dark mode'}
     >
