@@ -1,32 +1,16 @@
 import React from 'react'
 import styled from '@emotion/styled'
 
-import { IconWrapper } from './IconWrapper'
-
 interface IProps {
-  toggleColorMode: () => void
   colorMode: 'dark' | 'light'
 }
 
-export const DarkModeToggle: React.FC<IProps> = ({ toggleColorMode, colorMode }) => {
-  const isDark = colorMode === `dark`
-
-  function _toggleColorMode(event: React.SyntheticEvent) {
-    event.preventDefault()
-    toggleColorMode()
-  }
-
-  return (
-    <IconWrapper
-      onClick={_toggleColorMode}
-      aria-label={isDark ? 'Activate light mode' : 'Activate dark mode'}
-      title={isDark ? 'Activate light mode' : 'Activate dark mode'}
-    >
-      <MoonOrSun className={isDark ? 'dark' : 'light'} />
-      <MoonMask className={isDark ? 'dark' : 'light'} />
-    </IconWrapper>
-  )
-}
+export const DarkModeToggle: React.FC<IProps> = ({ colorMode }) => (
+  <>
+    <MoonOrSun className={colorMode} />
+    <MoonMask className={colorMode} />
+  </>
+)
 
 // This is based off a codepen! Much appreciated to: https://codepen.io/aaroniker/pen/KGpXZo
 const MoonOrSun = styled.div`
