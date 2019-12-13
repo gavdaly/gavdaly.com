@@ -28,7 +28,6 @@
     "gatsby-plugin-mdx": "^1.0.62",
     "gatsby-plugin-react-helmet": "^3.1.18",
     "gatsby-plugin-sharp": "^2.3.7",
-    "gatsby-plugin-theme-ui": "^0.2.40",
     "gatsby-plugin-typescript": "^2.1.22",
     "gatsby-remark-autolink-headers": "^2.1.21",
     "gatsby-remark-check-links": "^2.1.0",
