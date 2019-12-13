@@ -9,10 +9,13 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
+    "@babel/core": "^7.7.5",
     "@emotion/core": "^10.0.14",
     "@emotion/styled": "^10.0.14",
     "@mdx-js/mdx": "^1.1.0",
     "@mdx-js/react": "^1.0.27",
+    "@types/react": "^16.9.16",
+    "@types/react-helmet": "^5.0.14",
     "adm-zip": "^0.4.13",
     "babel-plugin-emotion": "^10.0.14",
     "gatsby": "^2.18.11",
@@ -42,6 +45,8 @@
     "gatsby-transformer-yaml": "^2.2.20",
     "lodash": "^4.17.15",
     "prism-react-renderer": "^1.0.2",
+    "prismjs": "^1.17.1",
+    "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.1",
@@ -49,8 +54,7 @@
     "react-medium-image-zoom": "^3.1.1",
     "react-outside-click-handler": "^1.2.4",
     "react-use": "^13.12.2",
-    "remark-slug": "^5.1.2",
-    "theme-ui": "^0.2.40"
+    "remark-slug": "^5.1.2"
   },
   "devDependencies": {
     "@types/node": "^12.12.17",
