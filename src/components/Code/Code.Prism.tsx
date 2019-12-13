@@ -26,7 +26,7 @@ const Copy: React.FC<CopyProps> = ({ toCopy }) => {
   }
 
   return (
-    <CopyButton onClick={copyToClipboardOnClick} data-a11y="false">
+    <CopyButton onClick={copyToClipboardOnClick}>
       {hasCopied ? (
         <>
           Copied <Icons.Copied />

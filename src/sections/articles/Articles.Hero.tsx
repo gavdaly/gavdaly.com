@@ -25,7 +25,11 @@ const authorQuery = graphql`
   }
 `
 
-const ArticlesHero: React.FC<IAuthor> = ({ authors }) => {
+interface IProps {
+  authors: IAuthor[]
+}
+
+const ArticlesHero: React.FC<IProps> = ({ authors }) => {
   const { gridLayout = 'tiles', hasSetGridLayout, setGridLayout } = useContext(GridLayoutContext)
 
   const results = useStaticQuery(authorQuery)
@@ -51,7 +55,6 @@ const ArticlesHero: React.FC<IAuthor> = ({ authors }) => {
           <GridButton
             onClick={() => setGridLayout('tiles')}
             active={tilesIsActive}
-            data-a11y="false"
             title="Show articles in Tile grid"
             aria-label="Show articles in Tile grid"
           >
@@ -60,7 +63,6 @@ const ArticlesHero: React.FC<IAuthor> = ({ authors }) => {
           <GridButton
             onClick={() => setGridLayout('rows')}
             active={!tilesIsActive}
-            data-a11y="false"
             title="Show articles in Row grid"
             aria-label="Show articles in Row grid"
           >
@@ -119,7 +121,7 @@ const GridButton = styled.button<{ active: boolean }>`
     background: var(--color-hover);
   }
 
-  &[data-a11y='true']:focus::after {
+  &:focus::after {
     content: '';
     position: absolute;
     left: -10%;

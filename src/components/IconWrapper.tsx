@@ -16,7 +16,7 @@ export const IconWrapper = styled.button`
     opacity: 1;
   }
 
-  &[data-a11y='true']:focus::after {
+  &:focus::after {
     content: '';
     position: absolute;
     left: 0;

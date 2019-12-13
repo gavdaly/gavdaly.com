@@ -8,7 +8,6 @@ interface SocialLinksProps {
     name: string
     url: string
   }[]
-  fill: string
 }
 
 interface iconData {
@@ -52,7 +51,6 @@ const SocialLinks: React.FC<SocialLinksProps> = ({ links }) => {
             key={option.url}
             target="_blank"
             rel="noopener nofollow"
-            data-a11y="false"
             aria-label={`Link to ${option.url}`}
             href={option.url}
           >

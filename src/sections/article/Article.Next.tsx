@@ -48,7 +48,7 @@ const GridItem: React.FC<GridItemProps> = ({ article }) => {
   const imageSource = article.hero.regular
 
   return (
-    <ArticleLink to={article.slug} data-a11y="false">
+    <ArticleLink to={article.slug}>
       <Item>
         <ImageContainer>
           <Image src={imageSource} />
@@ -163,7 +163,7 @@ const ArticleLink = styled(Link)`
     color: var(--color-accent);
   }
 
-  &[data-a11y='true']:focus::after {
+  &:focus::after {
     content: '';
     position: absolute;
     left: -2%;

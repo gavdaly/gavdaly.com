@@ -33,6 +33,7 @@ interface ArticlesListProps {
 interface ArticlesListItemProps {
   article: IArticle
   narrow?: boolean
+  className?: string
 }
 
 const ArticlesList: React.FC<ArticlesListProps> = ({ articles, alwaysShowAllDetails }) => {
@@ -46,7 +47,6 @@ const ArticlesList: React.FC<ArticlesListProps> = ({ articles, alwaysShowAllDeta
    * and turning it into an array of pairs of articles [[{}, {}], [{}, {}], [{}, {}]...]
    * This makes it simpler to create the grid we want
    */
-
   // In the future switch to index + 1 % 4, 1 & 0 --> long, 2,3 --> short
   const articlePairs = articles.reduce((result, _value, index, array) => {
     if (index % 2 === 0) {
@@ -57,8 +57,17 @@ const ArticlesList: React.FC<ArticlesListProps> = ({ articles, alwaysShowAllDeta
 
   useEffect(() => getGridLayout(), [])
 
+  function shouldBeLong(index: number): string {
+    const mod = index + (1 % 4)
+    if (mod === 1 || mod === 0) return 'long'
+    return 'short'
+  }
+
   return (
     <ArticlesListContainer hasSetGridLayout={hasSetGridLayout} alwaysShowAllDetails={alwaysShowAllDetails}>
+      {articles.map((article, index) => (
+        <ListItem article={article} className={shouldBeLong(index)} />
+      ))}
       {articlePairs.map((ap, index) => {
         const isEven = index % 2 !== 0
         const isOdd = index % 2 !== 1
@@ -76,7 +85,7 @@ const ArticlesList: React.FC<ArticlesListProps> = ({ articles, alwaysShowAllDeta
 
 export default ArticlesList
 
-const ListItem: React.FC<ArticlesListItemProps> = ({ article, narrow }) => {
+const ListItem: React.FC<ArticlesListItemProps> = ({ article, className, narrow = false }) => {
   if (!article) return null
 
   const { gridLayout } = useContext(GridLayoutContext)
@@ -85,18 +94,14 @@ const ListItem: React.FC<ArticlesListItemProps> = ({ article, narrow }) => {
   const hasHeroImage = imageSource && Object.keys(imageSource).length !== 0 && imageSource.constructor === Object
 
   return (
-    <ArticleLink to={article.slug} data-a11y="false">
+    <ArticleLink to={article.slug}>
       <Item gridLayout={gridLayout}>
         <ImageContainer narrow={narrow} gridLayout={gridLayout}>
           {hasHeroImage ? <Image src={imageSource} /> : <ImagePlaceholder />}
         </ImageContainer>
         <div>
-          <Title dark hasOverflow={hasOverflow} gridLayout={gridLayout}>
-            {article.title}
-          </Title>
-          <Excerpt narrow={narrow} hasOverflow={hasOverflow} gridLayout={gridLayout}>
-            {article.excerpt}
-          </Excerpt>
+          <Title>{article.title}</Title>
+          <Excerpt>{article.excerpt}</Excerpt>
           <MetaData>
             {article.date} · {article.timeToRead} min read
           </MetaData>
@@ -288,7 +293,7 @@ const ArticleLink = styled(Link)`
     color: var(--color-accent);
   }
 
-  &[data-a11y='true']:focus::after {
+  &:focus::after {
     content: '';
     position: absolute;
     left: -1.5%;
