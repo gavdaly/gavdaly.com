@@ -11,7 +11,11 @@ interface SocialLinksProps {
   fill: string
 }
 
-const icons = {
+interface iconData {
+  [key: string]: React.FC
+}
+
+const icons: iconData = {
   behance: Icons.Behance,
   dribbble: Icons.Dribbble,
   linkedin: Icons.LinkedIn,
@@ -28,11 +32,11 @@ const icons = {
   digitalocean: Icons.DigitalOcean,
 }
 
-const getHostname = url => {
+const getHostname = (url: string): string => {
   return new URL(url.toLowerCase()).hostname.replace('www.', '').split('.')[0]
 }
 
-const SocialLinks: React.FC<SocialLinksProps> = ({ links, fill = '#73737D' }) => {
+const SocialLinks: React.FC<SocialLinksProps> = ({ links }) => {
   if (!links) return null
 
   return (
@@ -52,7 +56,7 @@ const SocialLinks: React.FC<SocialLinksProps> = ({ links, fill = '#73737D' }) =>
             aria-label={`Link to ${option.url}`}
             href={option.url}
           >
-            <Icon fill={fill} />
+            <Icon />
             <Hidden>Link to ${option.url}</Hidden>
           </SocialIconContainer>
         )
