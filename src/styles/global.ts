@@ -96,7 +96,7 @@ export const globalStyles = css`
 
   /* Make images easier to work with */
   img {
-    max-width: 100%;
+    width: 100%;
     display: block;
   }
 

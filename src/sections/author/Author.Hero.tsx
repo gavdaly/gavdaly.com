@@ -70,7 +70,6 @@ const Heading = styled.h1`
 
 const Subheading = styled.p`
   margin: 0 auto;
-  max-width: 450px;
   color: var(--color-grey);
   font-size: 18px;
   line-height: 1.4;

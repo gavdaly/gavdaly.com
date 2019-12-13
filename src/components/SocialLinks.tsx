@@ -67,7 +67,6 @@ const SocialIconContainer = styled.a`
   position: relative;
   margin-left: 3.2rem;
   text-decoration: none;
-  max-width: 16px;
   svg {
     fill: var(--color-primary);
     transition: fill, scale 0.25s var(--ease-in-out-quad);

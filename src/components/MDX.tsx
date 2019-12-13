@@ -97,10 +97,10 @@ const PrismCSS = p => css`
       border-left: 3px solid transparent;
 
       ${Object.keys(p.theme.colors.prism)
-        .map(key => {
-          return `.${toKebabCase(key)}{color:${p.theme.colors.prism[key]};}`
-        })
-        .reduce((curr, next) => curr + next, ``)};
+    .map(key => {
+      return `.${toKebabCase(key)}{color:${p.theme.colors.prism[key]};}`
+    })
+    .reduce((curr, next) => curr + next, ``)};
 
       & > span {
       }
@@ -153,7 +153,6 @@ const ImageCSS = css`
 
     border-radius: 5px;
     width: 100%;
-    max-width: 680px;
   }
 
   .Image__Container {

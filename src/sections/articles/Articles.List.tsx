@@ -250,7 +250,6 @@ const Excerpt = styled.p`
   margin-bottom: 10px;
 
   @media (max-width: 34rem) {
-    max-width: 100%;
     padding: 0 20px;
     margin-bottom: 20px;
     -webkit-line-clamp: 3;
@@ -262,7 +261,6 @@ const MetaData = styled.div`
   font-size: 16px;
 
   @media (max-width: 34rem) {
-    max-width: 100%;
     padding: 0 20px 30px;
   }
 `
@@ -302,7 +300,7 @@ const ArticleLink = styled(Link)`
     border-radius: 5px;
   }
 
-  $@media (max-width: 34rem) {
+  @media (max-width: 34rem) {
     &:hover ${ImageContainer} {
       transform: none;
       box-shadow: initial;
