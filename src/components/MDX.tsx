@@ -43,7 +43,7 @@ const components = {
 }
 
 interface MDXProps {
-  content: React.ReactNode
+  content: React.ReactNode | any
 }
 
 const MDX: React.FC<MDXProps> = ({ content, children, ...props }) => {
@@ -82,7 +82,39 @@ const HeadingsCSS = css`
   }
 `
 
-const PrismCSS = p => css`
+const prism: { [key: string]: string } = {
+  token: `#fff`,
+  languageJavascript: `#e8696b`,
+  javascript: `#e8696b`,
+  background: `#292c34`,
+  comment: `#5e6a76`,
+  string: `#a8e2a8`,
+  var: `#b3bac5`,
+  number: `#e4854d`,
+  constant: `#b3bac5`,
+  plain: `#fff`,
+  doctype: `#e8696b`,
+  tag: `#e8696b`,
+  keyword: `#d49fd4`,
+  boolean: `#ff5874`,
+  function: `#5F8DC3`,
+  parameter: `#F9965D`,
+  className: `#ffcf74`,
+  attrName: `#bf87ba`,
+  attrValue: `#a8e2a8`,
+  interpolation: `#fff`,
+  punctuation: `#5FA8AA`,
+  ['maybe-class-name']: `#fff`,
+  property: `#80cbc4`,
+  propertyAccess: `#fff`,
+  namespace: `#b2ccd6`,
+  highlight: `rgba(255,255,255,0.07)`,
+  highlightBorder: `#e1bde2`,
+  dom: `#5F8DC3`,
+  operator: `#5FA8AA`,
+}
+
+const PrismCSS = css`
   .prism-code {
     overflow: auto;
     width: 100%;
@@ -91,16 +123,16 @@ const PrismCSS = p => css`
 
     margin: 1rem auto 3rem;
     border-radius: 0.3rem;
-    background: ${p.theme.colors.prism.background};
+    background: ${prism.background};
 
     .token-line {
       border-left: 3px solid transparent;
 
-      ${Object.keys(p.theme.colors.prism)
-    .map(key => {
-      return `.${toKebabCase(key)}{color:${p.theme.colors.prism[key]};}`
-    })
-    .reduce((curr, next) => curr + next, ``)};
+      ${Object.keys(prism)
+        .map(key => {
+          return `.${toKebabCase(key)}{color:${prism[key]};}`
+        })
+        .reduce((curr, next) => curr + next, ``)};
 
       & > span {
       }
@@ -117,8 +149,8 @@ const PrismCSS = p => css`
     .token-line.highlight-line {
       margin: 0 -32px;
       padding: 0 32px;
-      background: ${p.theme.colors.prism.highlight};
-      border-left: 3px solid ${p.theme.colors.prism.highlightBorder};
+      background: ${prism.highlight};
+      border-left: 3px solid ${prism.highlightBorder};
     }
 
     .operator + .maybe-class-name {
